@@ -1,15 +1,16 @@
 <template>
   <LoadingJson :show="loading" />
 
-  <div id="main" class="RTL">
-    <div class="div-top-arrow bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
-      <p class="font-4 font-bold text-white mr-3">پشتیبانی</p>
-    </div>
+  <div id="main" class="d-flex flex-column justify-content-start p-3">
+
+
+    <header class="div-top-arrow bg-color">
+      <span class="font-3 font-bold text-white">پشتیبانی</span>
+    </header>
 
     <div class="w-100 d-flex flex-column justify-content-center align-items-center" style="margin-top: 10rem">
-      <div class="w-85 d-flex justify-content-start">
-        <p class="font-3 font-bold text-color-blue">انتخاب موضوع تیکت</p>
-      </div>
+
+        <h2 class="w-100 text-end font-3 font-bold">انتخاب موضوع تیکت</h2>
 
       <div class="w-95 d-flex flex-wrap row-gap-4 justify-content-between mt-5">
         <div class="option-group">
@@ -25,12 +26,12 @@
       </div>
 
       <div class="w-95 d-flex flex-column align-items-start mt-5">
-        <p class="font-3 font-bold text-color-blue">مشکل خود را شرح دهید</p>
+        <h2 class="font-3 font-bold">مشکل خود را شرح دهید</h2>
         <textarea
           v-model="details"
           cols="5"
           rows="5"
-          class="rounded-4 text-center w-100 font-4 font-bold mt-3 shadow-lite p-3"
+          class="rounded-4 text-center w-100 font-4 font-bold mt-3 p-3"
           placeholder="توضیحات مورد نظر خود را وارد نمایید"
         ></textarea>
       </div>
@@ -87,20 +88,19 @@ var support = localStorage.getItem('support_phone')
 
 const activeIndex = ref(1)  // پشتیبانی باید به طور پیش‌فرض فعال باشد
 
-import homeIcon from '@/assets/img/home.svg'
-import customerIcon from '@/assets/img/customer.svg'
-import orderIcon from '@/assets/img/order.svg'
-import profileIcon from '@/assets/img/profile.svg'
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
 
 const navItems = [
-  { label: 'خانه', icon: homeIcon , route: '/home_page' },
-  { label: 'پشتیبانی', icon: customerIcon , route: '/support_page'},
-  { label: 'سفارشات', icon: orderIcon , route: '/orders_page'},
-  { label: 'کاربری', icon: profileIcon , route: '/user_area'},
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
+  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
 ]
-
-
-
 
 
 
@@ -148,9 +148,7 @@ const submitTicket = async () => {
 </script>
 
 <style scoped>
-.RTL{
-  direction: rtl;
-}
+
 .option-group {
   display: flex;
   flex-wrap: wrap;
@@ -163,11 +161,12 @@ const submitTicket = async () => {
   cursor: pointer;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: white;
-  box-shadow: 0px 5px 8px 0 rgba(189,227,228,37);
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-light);
   text-align: center;
-  //font-size: 1rem;
-  font-weight: bold;
+  font-family: IRANSans;
+    font-size: var(--font-size-md);
+  font-weight: var(--fw-bold);
   width: 48%;
   transition: all 0.3s ease;
 }
@@ -241,8 +240,4 @@ textarea {
   }
 }
 
-.active {
-  background-color: #007BFF;  /* رنگ دکمه وقتی فعال است */
-  color: white;
-}
 </style>

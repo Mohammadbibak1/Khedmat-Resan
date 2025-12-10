@@ -1,19 +1,32 @@
 <template>
   <LoadingJson :show="loading" />
 
-  <div id="main" class="w-100 bg-color d-flex flex-column align-items-center justify-content-center p-0">
-
-    <section class="w-100 bg-lite-color d-flex justify-content-center">
-      <img src="../../public/Logo-app.svg" alt="logo" class="img-login w-40 bg-color rounded-pill" />
+  <div
+    id="main"
+    class="w-100 bg-color d-flex flex-column align-items-center justify-content-between p-0"
+  >
+    <section
+      class="w-100 h-50 bg-lite-color d-flex justify-content-center align-items-center"
+      style="background-color: #5263c5"
+    >
+      <img
+        src="../../public/Logo-app.svg"
+        alt="logo"
+        class="img-login w-40 rounded-pill"
+        style="background-color: #cbd3ff4a"
+      />
     </section>
 
-    <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-
-      <div class="w-80 p-5 rounded-5 shadow-custom d-flex flex-column align-items-center">
-        <label for="number" class="text-white font-4 font-bold text-center"
+    <div
+      class="w-100 h-50 d-flex flex-column justify-content-center align-items-center position-relative bg-circle"
+    >
+      <div
+        class="w-80 p-5 bg-color rounded-5 shadow-custom d-flex flex-column align-items-center row-gap-5 position-absolute"
+        style="top: -3rem"
+      >
+        <label for="number" class="text-white font-3 font-bold text-center"
           >برای ورود شماره موبایل خود راوارد کنید
         </label>
-
         <input
           v-model="phone"
           type="tel"
@@ -22,22 +35,18 @@
           class="w-100 rounded-pill p-3 shadow my-4"
           placeholder="0913......."
         />
-
-        <div class="d-flex align-items-center gap-3 my-3">
-          <label for="num" class="font-5 text-white font-bold text-end">
+        <div class="d-flex align-items-center column-gap-3">
+          <label for="num" class="font-5 text-white font-bold text-end font-4">
             تمام
-            <RouterLink to="/rules_page">شرایط و قوانین</RouterLink>
+            <RouterLink to="/rules_page" class="text-white">شرایط و قوانین</RouterLink>
             برنامه و
-            <RouterLink :to="{ name: 'PrivacyPage' }">حریم خصوصی</RouterLink>
+            <RouterLink :to="{ name: 'PrivacyPage' }" class="text-white">حریم خصوصی</RouterLink>
 
             را میپذیرم
           </label>
           <input v-model="check_rules" id="num" type="checkbox" />
         </div>
-
-        <button @click="SendData" class="w-65 button-Default shadow mt-3">
-          دریافت کد فعال سازی
-        </button>
+        <button @click="SendData" class="w-65">دریافت کد فعال سازی</button>
       </div>
     </div>
   </div>
@@ -118,5 +127,10 @@ function SendData() {
 </script>
 
 <style scoped>
-
+.bg-circle {
+  background-image: url('../assets/img/white-circle.svg');
+  background-position: bottom -8rem right -6rem;
+  background-size: 60%;
+  background-repeat: no-repeat;
+}
 </style>

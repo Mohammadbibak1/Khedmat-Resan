@@ -3,7 +3,7 @@
 
   <div id="main" class="RTL">
 
-    <div class="div-top-arrow bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
+    <header class=" bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
       <router-link
         :to="{ name: 'UserArea'}"
         class="d-flex align-items-center text-decoration-none"
@@ -11,7 +11,7 @@
         <p class="font-4 font-bold text-white mr-3">کاربری</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
       </router-link>
-    </div>
+    </header>
 
 
     <div class="w-100 d-flex flex-column align-items-center row-gap-4 p-3" style="margin-top: 6.5rem">
@@ -155,7 +155,5 @@ async function updateProfile() {
 
 
 <style scoped>
-.RTL{
-  direction: rtl;
-}
+
 </style>

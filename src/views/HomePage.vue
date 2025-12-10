@@ -2,35 +2,21 @@
   <LoadingJson :show="loading" />
   <div v-if="dialog" class="bg_dialog"></div>
 
-  <div class="d-flex flex-column align-items-center p-3 RTL" id="main">
-    <header
-      class="w-100 d-flex align-items-end justify-content-center bg-pic-header header-fixed rounded-bottom-5 shadow-custom p-3"
-      style="height: 10rem"
-    >
-      <div class="w-75 position-relative">
-        <img
-          src="../../src/assets/img/search-Blue.svg"
-          alt=""
-          class="position-absolute icon-size-3"
-          style="right: 1rem; top: 0.7rem"
-        />
-        <input
-          type="search"
-          v-model="searchQuery"
-          placeholder="به چه خدمتی نیاز دارید؟"
-          class="w-100 p-3 rounded-pill bg-gray font-4"
-          @keyup.enter="showSearchResults"
-        />
-      </div>
+  <div class="d-flex flex-column justify-content-start p-3 row-gap-3" id="main" style="margin-top: 18rem">
+
+    <header class="d-flex flex-column align-items-center justify-content-center">
+      <img src="../../public/Logo-app.svg" alt="" class="logo" />
+      <input
+        type="search"
+        v-model="searchQuery"
+        placeholder="به چه خدمتی نیاز دارید؟"
+        class="w-100 p-3 rounded-pill bg-gray font-"
+        @keyup.enter="showSearchResults"
+      />
     </header>
 
-    <!--    /********************** slider ***********************/-->
-
-    <div class="w-100 slider-row">
-      <Carousel
-        v-bind="carouselConfig"
-        class="carousel w-100 h-100"
-      >
+    <section class="w-100 slider-row">
+      <Carousel v-bind="carouselConfig" class="carousel w-100 h-100">
         <Slide v-for="(slide, index) in slider" :key="index" class="w-100">
           <img class="slider-img" :src="slide" />
         </Slide>
@@ -40,77 +26,28 @@
           <Pagination />
         </template>
       </Carousel>
-    </div>
+    </section>
 
-    <!--    /********************** slider ***********************/-->
-
-    <div class="w-95 d-flex flex-column align-items-start mt-5 mb-3">
-      <h2 class="font-3 font-bold text-end">خدمات ما</h2>
-      <hr class="hr-custom" />
-    </div>
+    <section class="w-100 d-flex justify-content-start align-items-center p-3 column-gap-3">
+      <img src="../assets/img/open-menu%20(1).svg" alt="" class="icon-3" />
+      <h2 class="font-2">خدمات</h2>
+    </section>
 
     <!--    /********************** service boxes ***********************/-->
 
-    <div class="w-100 d-flex justify-content-start flex-wrap gap-4 mt-3">
+    <div class="w-100 d-flex justify-content-center flex-wrap gap-2">
       <div class="custom-card" v-for="item in category" :key="item.id" @click="goToSubService(item.id)">
         <img :src="item.pic" alt="" class="custom-img-style" />
-        <button class="w-100 button-home mt-3 shadow">{{ item.name }}</button>
+        <h3 class="w-100 text-center text-color-primary font-3 font-bold">{{ item.name }}</h3>
       </div>
     </div>
 
-    <!--    /********************** service boxes end ***********************/-->
 
-    <div class="w-100 d-flex justify-content-between align-items-center mt-6 mb-3">
-      <h2 class="w-48 font-3 font-bold border-bottom-blue pb-2">پر طرفدارترین خدمات</h2>
-    </div>
-
-    <div class="w-48 d-flex justify-content-end gap-1 support-fixed ">
-      <a :href="`tel:${support}`" class="w-65 button-Support shadow text-center">پشتیبانی</a>
-      <button class="button-Support shadow pulse-circle">
-        <img src="../../src/assets/img/phone.svg" alt="" class="icon-size-3" />
-      </button>
-    </div>
-    <!--    /********************** fa-service boxes ***********************/-->
-
-    <div class="horizontal-scroll-container mt-3">
-      <div class="horizontal-scroll-wrapper">
-        <div class="offers-card" v-for="item in offers" :key="item.id" @click="goToPrivatePage(item.id , item.parent_id)" >
-          <img :src="item.pic" alt="" class="offers-img-style" />
-          <div class="custom-card-footer">
-            <button class="w-100 button-home mt-3 shadow">
-              {{ truncateName(item.name) }}
-            </button>          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--    /********************** fa-service boxes end ***********************/-->
-    <div class="d-flex justify-content-center mt-5 mb-4">
-      <a
-        href="https://behpaksaman.ir/%d8%af%d8%a7%d9%86%d8%b3%d8%aa%d9%86%db%8c-%d9%87%d8%a7/?v=3ad97a567017"
-      >
-        <img
-          src="../../src/assets/img/Blog.svg"
-          alt="blog"
-          class="w-100 rounded-5 bg-white shadow"
-        />
-      </a>
-    </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+    <!--    /********************** service boxes ***********************/-->
 
     <div>
       <BottomNavigation v-model="activeIndex" :items="navItems" />
     </div>
-
-
-
   </div>
 
   <div v-if="dialog" class="dialog">
@@ -129,31 +66,30 @@
       <h3 class="font-3 font-bold">مشتری عزیز</h3>
       <p class="font-4 font-bold text-center mt-4 RTL">
         لطفا نظر خود را در ارتباط با کیفیت خدمات
-       <span>{{worker_name}}</span>
+        <span>{{ worker_name }}</span>
         با ما در میان بگذارید
-
       </p>
 
       <div class="star-rating-container">
         <div class="stars-wrapper">
-      <span
-        v-for="star in 5"
-        :key="star"
-        @click="setRating(star)"
-        @mouseover="hoverRating = star"
-        @mouseleave="hoverRating = 0"
-        :class="{
-          active: star <= (hoverRating || rating),
-          animated: star === hoverRating,
-        }"
-      >
-        <svg width="40" height="40" viewBox="0 0 24 24" class="star-icon">
-          <path
-            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-            :fill="star <= (hoverRating || rating) ? '#FFD700' : '#e0e0e0'"
-          />
-        </svg>
-      </span>
+          <span
+            v-for="star in 5"
+            :key="star"
+            @click="setRating(star)"
+            @mouseover="hoverRating = star"
+            @mouseleave="hoverRating = 0"
+            :class="{
+              active: star <= (hoverRating || rating),
+              animated: star === hoverRating,
+            }"
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" class="star-icon">
+              <path
+                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                :fill="star <= (hoverRating || rating) ? '#FFD700' : '#e0e0e0'"
+              />
+            </svg>
+          </span>
         </div>
         <div class="rating-text" v-if="rating > 0">امتیاز شما: {{ rating }} از 5</div>
       </div>
@@ -182,14 +118,14 @@ import BottomNavigation from '@/components/BottomNavigation.vue'
 import axios from 'axios'
 import { SwalError, SwalSuccess } from '@/assets/js/MyJs.js'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 import { useServiceStore } from '@/stores/useServiceStore.js'
 
 // متغیرهای موجود شما
 const url = localStorage.getItem('ProjectUrl')
 const apikey = localStorage.getItem('ApiKey')
 const user_id = localStorage.getItem('user_id')
-const router = useRouter();
+const router = useRouter()
 const loading = ref(false)
 const slider = ref([])
 const category = ref([])
@@ -204,22 +140,21 @@ const rating = ref(0)
 const hoverRating = ref(0)
 const description = ref(null)
 
-
 const activeIndex = ref(0)
 
-import homeIcon from '@/assets/img/home.svg'
-import customerIcon from '@/assets/img/customer.svg'
-import orderIcon from '@/assets/img/order.svg'
-import profileIcon from '@/assets/img/profile.svg'
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
 
 const navItems = [
-  { label: 'خانه', icon: homeIcon , route: '/home_page' },
-  { label: 'پشتیبانی', icon: customerIcon , route: '/support_page'},
-  { label: 'سفارشات', icon: orderIcon , route: '/orders_page'},
-  { label: 'کاربری', icon: profileIcon , route: '/user_area'},
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
+  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
 ]
-
-
 
 async function SendFirstRequest() {
   const sendData = {
@@ -245,13 +180,12 @@ async function SendFirstRequest() {
     support.value = publicRes.data
 
     const servicecategory = useServiceStore()
-    servicecategory.setServices( category.value)
+    servicecategory.setServices(category.value)
 
     if (delivery_order.value !== null) {
       dialog.value = true
       worker_name.value = delivery_order.value.worker_name
     }
-
   } catch (error) {
     console.error('خطا در دریافت اطلاعات:', error)
     SwalError('خطا!', 'خطای ارتباط با سرور', 'error', true, SendFirstRequest)
@@ -286,7 +220,6 @@ const showSearchResults = async () => {
     })
     return
   }
-
 
   // ساخت HTML لیست نتایج
   const resultsHtml = `
@@ -364,11 +297,14 @@ const handleResultSelect = (item) => {
   searchQuery.value = ''
 
   if (item.type === 'child') {
-
     // رفتن به صفحه سوالات زیرسرویس
-    router.push({ name: 'PrivateQuestion', params: { id: item.id , parentId: item.parent_id
-      } })
-
+    router.push({
+      name: 'PrivateQuestion',
+      params: {
+        id: item.id,
+        parentId: item.parent_id,
+      },
+    })
   } else if (item.type === 'category') {
     // رفتن به صفحه زیرسرویس‌ها
     router.push({ name: 'SubcategoryPage', params: { id: item.id } })
@@ -381,7 +317,7 @@ const carouselConfig = {
   autoplay: 3000, // تغییر به میلی‌ثانیه (3 ثانیه)
   pauseAutoplayOnHover: true,
   transition: 500, // زمان انتقال بین اسلایدها
-  dir: 'rtl' // جهت اسلایدر برای راست‌چین
+  dir: 'rtl', // جهت اسلایدر برای راست‌چین
 }
 
 const setRating = (star) => {
@@ -389,18 +325,18 @@ const setRating = (star) => {
   console.log('امتیاز انتخاب شده:', star)
 }
 
-function addRate(){
-
-  if (rating.value === 0) {  // استفاده از rating به جای star
-    SwalError("خطا!", "لطفا امتیاز استاد کار را مشخص کنید", "error")
+function addRate() {
+  if (rating.value === 0) {
+    // استفاده از rating به جای star
+    SwalError('خطا!', 'لطفا امتیاز استاد کار را مشخص کنید', 'error')
     return false
   }
   if (!description.value) {
-    SwalError("خطا!", "لطفا توضیحات را در ارتباط با سفارش وارد کنید", "error")
+    SwalError('خطا!', 'لطفا توضیحات را در ارتباط با سفارش وارد کنید', 'error')
     return false
   }
 
-  var rate_data= {
+  var rate_data = {
     apikey: apikey,
     user_id: user_id,
     worker_id: delivery_order.value.worker_id,
@@ -412,27 +348,28 @@ function addRate(){
   }
   console.log(rate_data)
 
-  axios.post(url + 'add_rate', rate_data).then((response) => {
-
-    if (response.data.status === 'ok') {
-      SwalSuccess('تبریک', 'نظر شما با موفقیت ثبت شد')
-      dialog.value = false
-      rating.value = 0
-      description.value = ''
-
-    }else{
-      SwalError('متاسفانه', response.data.event)
-    }
-  }).catch((err) => {
-    console.log(err)
-  })
+  axios
+    .post(url + 'add_rate', rate_data)
+    .then((response) => {
+      if (response.data.status === 'ok') {
+        SwalSuccess('تبریک', 'نظر شما با موفقیت ثبت شد')
+        dialog.value = false
+        rating.value = 0
+        description.value = ''
+      } else {
+        SwalError('متاسفانه', response.data.event)
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 const goToSubService = (id) => {
   router.push({ name: 'SubcategoryPage', params: { id } })
 }
 
-const goToPrivatePage = (id , parentID) => {
+const goToPrivatePage = (id, parentID) => {
   router.push({ name: 'PrivateQuestion', params: { id: id, parentId: parentID } })
 }
 
@@ -440,8 +377,9 @@ const goToPrivatePage = (id , parentID) => {
 watch(dialog, (val) => {
   document.body.style.overflow = val ? 'hidden' : 'auto'
 })
+
 function truncateName(name) {
-  return name.length >14 ? name.slice(0, 14) + '...' : name;
+  return name.length > 14 ? name.slice(0, 14) + '...' : name
 }
 </script>
 
@@ -495,20 +433,17 @@ function truncateName(name) {
 }
 
 .custom-card {
-  width: calc(33.333% - 1rem); /* همیشه ۳تا کنار هم */
-  margin-bottom: 1rem;
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
 
 .custom-img-style {
   width: 100%;
-  height: 14rem;
+  height: 10rem;
   object-fit: cover;
-
-  /* استایل گوشه‌ها */
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 15px;
 
   transition:
     transform 0.3s ease,
@@ -521,9 +456,8 @@ function truncateName(name) {
 }
 
 .slider-row {
-  margin-top: 12rem;
   height: 20rem; /* یا هر ارتفاعی که مدنظرت هست */
-  overflow: visible ;
+  overflow: visible;
 }
 
 .slider-img {
@@ -616,7 +550,6 @@ function truncateName(name) {
   transform: scale(1.02);
 }
 
-
 /* استایل های پرطرفدارترین خدمات */
 
 .fade-enter-active,
@@ -637,5 +570,4 @@ function truncateName(name) {
   opacity: 1;
   transform: translateY(0);
 }
-
 </style>

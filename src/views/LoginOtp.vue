@@ -1,7 +1,7 @@
 <template>
   <LoadingJson :show="loading" />
 
-  <div class="bg-main d-flex flex-column align-items-center justify-content-center" id="main">
+  <div class=" d-flex flex-column align-items-center justify-content-center" id="main">
     <div class="w-100 d-flex flex-column justify-content-center align-items-center">
       <img src="../../src/assets/img/logo.png" alt="logo" class="img-login" />
 

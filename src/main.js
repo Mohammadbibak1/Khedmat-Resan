@@ -1,4 +1,4 @@
-import "sweetalert2"
+import 'sweetalert2'
 import '@/assets/css/style.css'
 import '@/assets/css/Bootstrap.css'
 import '@/assets/js/MyJs.js'
@@ -11,11 +11,11 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import "@/assets/css/style.css"
+import '@/assets/css/style.css'
 // app config
-localStorage.setItem('ProjectUrl', 'https://back.samankhedmat.ir/')
-localStorage.setItem('ApiKey', 'MY_api_key_is:HELLO_saman_Khedmat_Shahreza')
-export const appVersion = '1.0.5';
+localStorage.setItem('ProjectUrl', 'https://back.khedmatrasan.ir/')
+localStorage.setItem('ApiKey', 'khr-app-2024-08a9b7c6d5e4f3g2h1i0j-zkxynp')
+export const appVersion = '1.0.0'
 
 // app config
 

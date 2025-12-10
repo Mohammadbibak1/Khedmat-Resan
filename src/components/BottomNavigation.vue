@@ -1,6 +1,8 @@
 <template>
+
+
   <div class="bottom-navigation">
-    <div class="bg-white d-flex justify-content-between align-items-end rounded-top-5 shadow-bottom-navigation px-5" style="height: 6rem;">
+    <div class="bg-white d-flex justify-content-between align-items-center rounded-top-5 shadow-bottom-navigation px-5" style="height: 6rem;">
       <div
         class="nav-item"
         v-for="(item, index) in items"
@@ -9,12 +11,14 @@
         @click="navigate(index, item.route)"
       >
         <div class="icon-wrapper">
-          <img :src="item.icon" class="icon-size-3" />
+          <img :src="item.icon" class="icon-3" />
         </div>
         <p v-if="activeIndex !== index" class="bottom-navigation-title">{{ item.label }}</p>
       </div>
     </div>
   </div>
+
+
 </template>
 
 <script setup>

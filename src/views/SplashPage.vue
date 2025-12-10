@@ -3,11 +3,12 @@
 
   <div id="main" class="bg-color w-100 d-flex flex-column" style="min-height: 100vh">
     <div
-      class="d-flex flex-column align-items-center justify-content-center flex-grow-1 text-center" style="gap: 1rem">
-      <img src="../../public/Logo-app.svg" class="logo_splash">
+      class="d-flex flex-column align-items-center justify-content-center flex-grow-1 text-center"
+      style="gap: 1rem"
+    >
+      <img src="../../public/Logo-app.svg" class="logo_splash" />
       <span class="font-bold font-2 text-white">خدمت رسان</span>
     </div>
-
 
     <div class="w-100 d-flex flex-column align-items-center mb-3">
       <span class="font-4 font-bold text-white">نسخه کاربر</span>
@@ -63,25 +64,25 @@ async function SendFirstRequest() {
     tell = tellRes.data
     localStorage.setItem('support_phone', tell)
 
-    if (appVersion !== app_version.value) {
-      await SwalUpdateSplash(
-        'بروزرسانی جدید',
-        'یک نسخه جدید برای اپلیکیشن موجود است. لطفاً آپدیت کنید.',
-        'error',
-        false,
-        null,
-        'https://samankhedmat.ir/',
-      )
-      return false
-    } else if (updating_version.value == 1) {
-      await SwalErrorSplash(
-        'خطا!',
-        'اپلیکیشن در دسترس نیست لطفا در مدتی نزدیک منتظر دیدار شما هستیم.',
-        'error',
-        false,
-      )
-      return false
-    }
+    // if (appVersion !== app_version.value) {
+    //   await SwalUpdateSplash(
+    //     'بروزرسانی جدید',
+    //     'یک نسخه جدید برای اپلیکیشن موجود است. لطفاً آپدیت کنید.',
+    //     'error',
+    //     false,
+    //     null,
+    //     'https://samankhedmat.ir/',
+    //   )
+    //   return false
+    // } else if (updating_version.value == 1) {
+    //   await SwalErrorSplash(
+    //     'خطا!',
+    //     'اپلیکیشن در دسترس نیست لطفا در مدتی نزدیک منتظر دیدار شما هستیم.',
+    //     'error',
+    //     false,
+    //   )
+    //   return false
+    // }
 
     return true
   } catch (error) {
@@ -123,8 +124,5 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.logo_splash {
-  width: 20rem;
-  height: 20rem;
-}
+
 </style>

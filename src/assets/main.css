@@ -1,7 +1,8 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
+  width: 100%;
+  max-width: var(--app-max-width);
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
@@ -27,10 +28,4 @@ a,
     place-items: center;
   }
 
-  #app {
-    max-width: var(--app-max-width);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
 }

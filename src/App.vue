@@ -51,7 +51,9 @@ App.addListener('backButton', async () => {
 </script>
 
 <template>
-  <router-view></router-view>
+  <div id="main">
+    <router-view />
+  </div>
 </template>
 
 <style scoped></style>
