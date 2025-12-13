@@ -2,18 +2,18 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="RTL">
-    <header class="div-top-arrow bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
+    <header class="div-top-arrow">
       <router-link
         :to="{ name: 'UserArea' }"
         class="d-flex align-items-center text-decoration-none"
       >
-        <p class="font-4 font-bold text-white mr-3">درباره ما</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-3 font-bold text-white mr-3">درباره ما</p>
       </router-link>
     </header>
 
     <div class="w-100 h-100 d-flex flex-column align-items-center p-3" style="margin-top: 7rem">
-      <div class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow-lite clean-content" v-html="cleanedData"></div>
+      <div class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow clean-content" v-html="cleanedData"></div>
     </div>
   </div>
 </template>

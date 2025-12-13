@@ -1,18 +1,19 @@
 <template>
+
   <LoadingJson :show="loading" />
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
     <div
-      class="div-top-arrow bg-color max_width d-flex justify-content-between rounded-bottom-5 shadow">
+      class="div-top-arrow justify-content-between">
+      <p class="font-3 font-bold text-white mr-3">سوالات</p>
       <router-link
         :to="{ name: 'SubcategoryPage', params: { id: parentId } }"
-        class="d-flex align-items-center text-decoration-none"
+        class="d-flex align-items-center"
       >
-        <p class="text-white font-3 font-bold rounded-pill mr-2">انصراف</p>
-        <img src="../assets/img/Close.svg" alt="" class="icon-size-1" />
+        <p class="text-white font-3 font-bold mr-2">انصراف</p>
+        <img src="../assets/img/Close.svg" alt="" class="icon-3" />
       </router-link>
 
-      <p class="font-3 font-bold text-white mr-3">سوالات</p>
     </div>
 
     <div class="w-100 d-flex flex-column align-items-center p-3 row-gap-4" style="margin-top: 8rem">
@@ -25,7 +26,7 @@
         <!-- Radio -->
         <div
           v-if="question.type === 'radio'"
-          class="w-100 bg-white p-3 d-flex flex-column align-items-start row-gap-3 rounded-4 shadow-lite"
+          class="w-100 bg-white p-3 d-flex flex-column align-items-start row-gap-3 rounded-4 shadow"
         >
           <div
             v-for="(ans, aIndex) in question.answer"
@@ -87,7 +88,7 @@
 
 
       <button
-        class="w-45 button-Default p-3 shadow font-4 mt-5"
+        class="w-45"
         :class="{ 'disabled-btn': !allQuestionsAnswered }"
         @click="goToNext"
         :disabled="!allQuestionsAnswered"

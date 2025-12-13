@@ -2,18 +2,18 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
-    <div
-      class="div-top-arrow bg-color max_width d-flex justify-content-end rounded-bottom-5 shadow"
+    <header
+      class="div-top-arrow"
       @click="goBack"
     >
-      <p class="font-4 font-bold text-white mr-3">افزودن آدرس</p>
       <img class="svg-back" src="../assets/img/arrow-right.svg" alt="افزودن آدرس" />
-    </div>
+      <p class="font-3 font-bold text-white mr-3">افزودن آدرس</p>
+    </header>
 
     <div class="w-100 d-flex flex-column align-items-center row-gap-4 p-4" style="margin-top: 8rem">
       <div class="w-100 d-flex justify-content-between align-items-center">
         <div class="w-48 d-flex flex-column">
-          <label for="state" class="font-bold font-4 text-black"> استان</label>
+          <label for="state" class="font-bold font-3 text-black"> استان</label>
           <select
             v-model="state_id"
             name="state"
@@ -28,7 +28,7 @@
         </div>
 
         <div class="w-48 d-flex flex-column">
-          <label for="state" class="font-bold font-4 text-black"> شهر</label>
+          <label for="state" class="font-bold font-3 text-black"> شهر</label>
           <select v-model="city_id" name="city" id="city" class="p-3 shadow mt-3">
             <option v-for="city in cities" :key="city.id" :value="city.id">
               {{ city.name }}
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <h2 class="w-100 text-end mt-1 font-4 font-bold">آدرس پستی</h2>
+      <h2 class="w-100 text-end mt-1 font-3 font-bold">آدرس پستی</h2>
       <textarea
         v-model="address"
         name="توضیحات"
@@ -47,7 +47,7 @@
         class="w-100 shadow-lite rounded-5 p-5"
       ></textarea>
 
-      <h2 class="w-100 text-end mt-1 font-4 font-bold">نقشه</h2>
+      <h2 class="w-100 text-end mt-1 font-3 font-bold">نقشه</h2>
 
       <div class="map-holder shadow-lite">
         <l-map ref="map" v-model:zoom="zoom" :center="center" @click="onMapClick">

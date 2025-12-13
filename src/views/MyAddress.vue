@@ -2,22 +2,22 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
-    <div class="div-top-arrow bg-color max_width justify-content-between rounded-bottom-5 ">
-      <div class="d-flex">
-        <router-link to="/add_address" tabindex="0">
-        <p class="bg-white font-5 font-bold rounded-pill shadow-lg " style="padding: 0.6rem 1.5rem">
-          افزودن آدرس
-          <img src="../assets/img/add.svg " alt="" class="icon-size-5" />
-        </p>
-        </router-link>
-      </div>
+    <div class="div-top-arrow justify-content-between">
 
       <router-link
         :to="{ name: 'UserArea' }"
         class="d-flex align-items-center text-decoration-none">
-        <p class="font-4 font-bold text-white mr-3">آدرس های من</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-4 font-bold text-white mr-3">آدرس های من</p>
       </router-link>
+      <div class="d-flex">
+        <router-link to="/add_address" tabindex="0">
+        <p class="bg-white font-5 font-bold rounded-pill shadow-lg " style="padding: 0.6rem 1.5rem">
+          افزودن آدرس
+          <img src="../assets/img/add.svg " alt="" class="icon-5" />
+        </p>
+        </router-link>
+      </div>
 
     </div>
 
@@ -29,18 +29,18 @@
       <div
         v-for="item in address"
         :key="item.id"
-        class="w-90 bg-white p-4 d-flex justify-content-between align-items-center rounded-4 shadow-lite"
+        class="w-90 bg-white p-4 d-flex justify-content-between align-items-center rounded-4 shadow"
       >
         <div class="d-flex">
-          <img src="../assets/img/Location-address.svg" alt="" class="icon-size-3" />
-          <p class="font-4 font-bold mr-3">{{ item.address }}</p>
+          <img src="../assets/img/address.svg" alt="" class="icon-5" />
+          <p class="font-3 font-bold mr-3">{{ item.address }}</p>
         </div>
 
         <div @click.stop="deleteAddress(item.id)" role="button" tabindex="0">
           <img
             src="../assets/img/Trashbin.svg"
             alt="حذف آدرس"
-            class="icon-size-4 bg-white shadow p-2 rounded-pill cursor-pointer"
+            class="icon-2 bg-white shadow p-2 rounded-pill cursor-pointer"
           />
         </div>
 

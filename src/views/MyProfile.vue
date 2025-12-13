@@ -3,13 +3,13 @@
 
   <div id="main" class="RTL">
 
-    <header class=" bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
+    <header class="div-top-arrow">
       <router-link
-        :to="{ name: 'UserArea'}"
+        :to="{ name: 'SupportPage'}"
         class="d-flex align-items-center text-decoration-none"
       >
-        <p class="font-4 font-bold text-white mr-3">کاربری</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-3 mr-3 font-bold text-white">پروفایل من</p>
       </router-link>
     </header>
 
@@ -17,12 +17,12 @@
     <div class="w-100 d-flex flex-column align-items-center row-gap-4 p-3" style="margin-top: 6.5rem">
 
       <div class="w-100 d-flex flex-column align-items-start mt-3">
-        <label for="name" class="font-4 text-black font-bold">نام و نام خانوادگی</label>
+        <label for="name" class="font-3 text-black font-bold">نام و نام خانوادگی</label>
         <input v-model="name" type="text" class="w-100 border-0 p-4 shadow-lite rounded-4 font-5 font-bold mt-3" id="name">
       </div>
 
       <div class="w-100 d-flex flex-column align-items-start mt-3">
-        <label for="tell" class="font-4 text-black font-bold">شماره همراه</label>
+        <label for="tell" class="font-3 text-black font-bold">شماره همراه</label>
         <input v-model="phone"  class="w-100 border-0 p-4 shadow-lite rounded-4 font-5 font-bold mt-3" disabled>
       </div>
 

@@ -35,12 +35,25 @@
 
     <!--    /********************** service boxes ***********************/-->
 
-    <div class="w-100 d-flex justify-content-center flex-wrap gap-2">
+    <div class="w-100 d-flex justify-content-start flex-wrap gap-2">
       <div class="custom-card" v-for="item in category" :key="item.id" @click="goToSubService(item.id)">
         <img :src="item.pic" alt="" class="custom-img-style" />
         <h3 class="w-100 text-center text-color-primary font-3 font-bold">{{ item.name }}</h3>
       </div>
     </div>
+
+
+
+    <!-- دکمه پشتیبانی -->
+    <div class="support-fixed">
+      <a :href="`tel:${support}`" class="w-65 button-Support text-center"
+      >پشتیبانی</a
+      >
+      <button class="button-Support shadow pulse-circle icon-size-2">
+        <img src="../../src/assets/img/phone.svg" alt="" class="icon-2" />
+      </button>
+    </div>
+
 
 
     <!--    /********************** service boxes ***********************/-->
@@ -475,15 +488,7 @@ function truncateName(name) {
   --vc-pgn-width: 5px;
 }
 
-.support-fixed {
-  position: fixed;
-  bottom: 8rem;
-  left: 1.5rem;
-  z-index: 5;
-  display: flex;
-  gap: 0.5rem;
-  animation: shake 2.2s infinite ease-in-out;
-}
+
 
 /* لرزش */
 @keyframes shake {

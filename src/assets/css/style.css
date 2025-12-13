@@ -227,6 +227,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   width: 100%;
+  max-width: var(--app-max-width);
   margin: 0 auto;
   z-index: 500;
 }
@@ -506,8 +507,11 @@ input[type="radio"] {
   width: 2rem;
   height: 2rem;
   background-color: #ffffff;
-  border: 2px solid #0BA6AB;
+  border: 2px solid var(--primary-color);
   border-radius: 50%;
+
+  font-family: var(--font-bold);
+  font-size: var(--font-size-md);
 }
 
 input[type="radio"]:checked {
@@ -517,7 +521,8 @@ input[type="radio"]:checked {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background-image: url(../img/radio.svg) !important;
+  background-color: var(--primary-color);
+  /*background-image: url(../img/radio.svg) !important;*/
   background-position: center;
 }
 
@@ -558,14 +563,20 @@ select {
 header{
   width: 100%;
   max-width: var(--app-max-width);
+
   position: fixed;
   top: 0;
-  padding: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: calc(1rem + env(safe-area-inset-top)) 1rem 1rem;
   background-color: var(--primary-color);
+
   border-radius: 0 0 3rem 3rem;
   box-shadow: var(--shadow-md);
   z-index: 10;
 }
+
 
 .div-top-arrow {
   height: 7rem;
@@ -575,10 +586,14 @@ header{
   max-width: var(--app-max-width);
   z-index: 10;
   background-color: var(--primary-color) !important;
+  font-size: var(--font-size-lg);
   display: flex;
   align-items: center;
   justify-content: right;
-  padding: 20px;
+  gap: .5rem;
+  padding: 2rem;
+
+  border-radius: 0 0 1.5rem 1.5rem;
 }
 
 .svg-back {
@@ -643,6 +658,31 @@ button {
   border: var(--bg-white) 3px solid !important;
   box-shadow: var(--shadow-light);
 
+}
+
+
+.button-Support{
+  background: linear-gradient(213deg,rgba(0, 235, 141, 1) 0%, rgba(87, 148, 248, 1) 100%) !important;
+  color: var(--bg-white) !important;
+  font-weight: var(--fw-ultra-bold) !important;
+  font-size: var(--font-size-lg) !important;
+  font-family: var(--font-bold);
+  padding: 1rem !important;
+  border-radius: 50px !important;
+  border: var(--bg-white) 3px solid !important;
+  box-shadow: var(--shadow-light);
+  text-decoration: none;
+}
+
+.support-fixed {
+  width: 50%;
+  position: fixed;
+  bottom: 8rem;
+  left: 1.5rem;
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  animation: shake 2.2s infinite ease-in-out;
 }
 
 
@@ -749,5 +789,8 @@ button {
   height: 10rem;
 }
 
+a, a:hover, a:focus, a:active {
+  text-decoration: none !important;
+}
 
 

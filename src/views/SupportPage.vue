@@ -30,8 +30,8 @@
         <textarea
           v-model="details"
           cols="5"
-          rows="5"
-          class="rounded-4 text-center w-100 font-4 font-bold mt-3 p-3"
+          rows="10"
+          class="rounded-4 text-center w-100 font-4 font-bold mt-3 p-3 shadow"
           placeholder="توضیحات مورد نظر خود را وارد نمایید"
         ></textarea>
       </div>
@@ -40,15 +40,16 @@
         ارسال تیکت
       </button>
 
-      <router-link to="/my_ticket" class="font-4 mb-4 text-decoration-none" style="color: #0F8096; text-decoration: underline">تیکت های من</router-link>
+      <router-link to="/my_ticket" class="font-3 font-normal text-color-primary text-decoration-none">تیکت های من</router-link>
+
 
       <!-- دکمه پشتیبانی -->
-      <div class="w-48 d-flex justify-content-end gap-1 support-fixed RTL">
-        <a :href="`tel:${support}`" class="w-65 button-Support shadow text-center"
+      <div class="support-fixed">
+        <a :href="`tel:${support}`" class="w-65 button-Support text-center"
         >پشتیبانی</a
         >
-        <button class="button-Support shadow pulse-circle">
-          <img src="../../src/assets/img/phone.svg" alt="" class="icon-size-3" />
+        <button class="button-Support shadow pulse-circle icon-size-2">
+          <img src="../../src/assets/img/phone.svg" alt="" class="icon-2" />
         </button>
       </div>
 
@@ -172,8 +173,8 @@ const submitTicket = async () => {
 }
 
 .custom-radio.selected {
-  background-color: #BDE3E4;
-  color: #0F8096;
+  background-color: var(--secondary-color);
+  color: black;
 }
 
 textarea {

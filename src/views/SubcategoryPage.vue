@@ -1,14 +1,13 @@
 <template>
-  <div id="main" class="d-flex align-items-center flex-column RTL">
-    <header class="div-top-arrow bg-color max_width d-flex justify-content-end rounded-bottom-5">
-      <div class="d-flex justify-content-center">
-        <h1 class="font-4 font-bold text-white mr-3">انتخاب نوع خدمت</h1>
 
-        <router-link
-          :to="{ name: 'HomePage'}">
+
+  <div id="main" class="d-flex align-items-center flex-column RTL">
+    <header class="div-top-arrow">
+      <div class="d-flex justify-content-center">
+        <router-link :to="{ name: 'HomePage' }">
           <img class="svg-back" src="../assets/img/arrow-right.svg" alt="back" />
         </router-link>
-
+        <h1 class="font-4 font-bold text-white mr-3">انتخاب نوع خدمت</h1>
       </div>
     </header>
 
@@ -30,8 +29,8 @@
           />
         </div>
         <div class="w-65 p-1">
-          <h2 class="font-bold text-color-blue">{{ service.name }}</h2>
-          <p class="font-4 text-end mt-3">
+          <h2 class="font-bold font-3">{{ service.name }}</h2>
+          <p class="font-4 text-end mt-3 font-normal">
             {{
               stripHtml(service.description).length > 70
                 ? stripHtml(service.description).slice(0, 70) + '...'
@@ -40,7 +39,7 @@
           </p>
           <div class="d-flex justify-content-between mt-3">
             <div>
-              <img src="../assets/img/Detials.svg" alt="details" class="icon-size-2 ml-1" />
+              <img src="../assets/img/Detials.svg" alt="details" class="icon-3 ml-1" />
               <a
                 @click="ShowDescription(service.description)"
                 class="text-color-blue font-5 font-bold text-decoration-none"
@@ -50,7 +49,7 @@
             </div>
 
             <div>
-              <img src="../assets/img/Dollar.svg" alt="details" class="icon-size-2 ml-1" />
+              <img src="../assets/img/Dollar.svg" alt="details" class="icon-3 ml-1" />
               <a
                 @click="ShowGuide(service.price_guide)"
                 class="text-color-blue font-5 font-bold text-decoration-none"

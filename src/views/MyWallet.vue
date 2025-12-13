@@ -3,12 +3,12 @@
 
   <div id="main" class="RTL">
 
-    <div class="div-top-arrow bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
+    <div class="div-top-arrow">
       <router-link
         :to="{ name: 'UserArea' }"
         class="d-flex align-items-center text-decoration-none">
-        <p class="font-4 font-bold text-white mr-3">کیف پول</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-4 font-bold text-white mr-3">کیف پول</p>
       </router-link>
     </div>
 
@@ -18,7 +18,7 @@
 
         <p class="text-end font-4 font-bold">موجودی کیف پول</p>
 
-        <div class="w-100 bg-white d-flex justify-content-between p-3 rounded-5 shadow-lite mt-3">
+        <div class="w-100 bg-white d-flex justify-content-between p-3 rounded-5 shadow mt-3">
           <div class="w-50 d-flex justify-content-end align-items-center">
             <p v-if="user_wallet>0" class="text-blue-lite font-bold wallet-amount">  {{ Number(user_wallet).toLocaleString('fa-IR') }}</p>
             <p v-else class="text-color-red font-bold wallet-amount">   {{ Number(user_wallet).toLocaleString('fa-IR') }}</p>
@@ -27,7 +27,7 @@
           </div>
 
           <router-link  :to="{ name: 'MyCart' }">
-            <img src="../assets/img/money.svg" alt="money" class="bg-color p-3 rounded-4 icon-size-6 shadow-lite">
+            <img src="../assets/img/money.svg" alt="money" class="bg-color p-3 rounded-4" width="40px">
           </router-link>
 
 
@@ -42,16 +42,16 @@
       <div class="w-95 d-flex flex-column align-items-start mt-3">
         <p class="font-4 font-bold">شارژ کیف پول</p>
 
-        <div class="w-100 bg-white rounded-5 p-3 d-flex flex-column justify-content-center align-items-center my-4 shadow-lite row-gap-4">
+        <div class="w-100 bg-white rounded-5 p-3 d-flex flex-column justify-content-center align-items-center my-4 shadow row-gap-4">
 
           <input
             v-model="amount"
             type="number"
             placeholder="مبلغ مد نظر (تومان)"
-            class="w-50 p-3 rounded-4 text-center bg-gray font-4 border-0"
+            class="w-50 p-3 rounded-4 text-center bg-gray font-4 border-0 bg-gray"
           />
 
-          <button @click="addWallet" class="w-50 button-Default shadow-lite font-4">
+          <button @click="addWallet" class="w-50 button-Default shadow font-4">
             افزایش موجودی
           </button>
         </div>
@@ -62,7 +62,7 @@
       <div
         v-for="item in show_history_wallet"
         :key="item.id"
-        class="w-95 bg-white d-flex flex-column justify-content-center align-items-center mt-3 rounded-5 shadow-lite wallet-padding"
+        class="w-95 bg-white d-flex flex-column justify-content-center align-items-center mt-3 rounded-5 shadow wallet-padding"
       >
 
         <div class="w-100 d-flex">
@@ -71,11 +71,11 @@
             <img
               :src="getImage(item.type)"
               alt=""
-              class="icon-size-4 ml-3"
+              class="icon-2 ml-3"
             />
             <p
               :class="[
-          'font-bold font-4',
+          'font-bold font-3',
           item.type === 'increase' ? 'text-color-green' : 'text-color-red'
         ]"
             >
@@ -83,14 +83,14 @@
             </p>
           </div>
           <div class="w-50 d-flex justify-content-end align-items-center">
-            <p class="font-5 font-bold">{{ item.date }}</p>
+            <p class="font-3 font-bold">{{ item.date }}</p>
           </div>
         </div>
 
         <hr class="w-95 border-2 text-color_blue">
 
         <div class="w-85 d-flex justify-content-between">
-          <p class="font-bold font-4"> {{ item.reason }}</p>
+          <p class="font-bold font-3"> {{ item.reason }}</p>
         </div>
       </div>
 

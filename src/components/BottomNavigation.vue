@@ -45,4 +45,5 @@ function navigate(index, routeName) {
 watch(() => props.modelValue, val => {
   activeIndex.value = val
 })
+
 </script>

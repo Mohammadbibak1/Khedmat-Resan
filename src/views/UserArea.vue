@@ -1,46 +1,46 @@
 <template>
   <div id="main" class="d-flex align-items-center flex-column RTl">
 
-    <div class="div-top-arrow bg-color max_width d-flex justify-content-end rounded-bottom-5">
-      <p class="font-4 font-bold text-white mr-3">ناحیه کاربری</p>
-    </div>
+    <header class="div-top-arrow">
+      <p class="font-3 font-bold text-white">کاربری</p>
+    </header>
 
-    <div class="w-100 d-flex flex-column align-items-center row-gap-4" style="margin-top: 8rem">
+    <div class="w-100 d-flex flex-column align-items-center row-gap-4 pt-2" style="margin-top: 8rem">
 
-      <router-link to="/my_profile" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/user.svg" alt="user" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">پروفایل من</p>
+      <router-link to="/my_profile" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/user.svg" alt="user" class="icon-3">
+        <p class="font-3 font-bold text-black" >پروفایل من</p>
       </router-link>
 
-      <router-link to="/my_address" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/location.svg" alt="address" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">آدرس های من</p>
+      <router-link to="/my_address" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/location.svg" alt="address" class="icon-3">
+        <p class="font-3 font-bold text-black" >آدرس های من</p>
       </router-link>
 
-      <router-link to="/my_wallet" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/transfer.svg" alt="see" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">مشاهده تراکنش های مالی</p>
+      <router-link to="/my_wallet" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/transfer.svg" alt="see" class="icon-3">
+        <p class="font-3 font-bold text-black" >مشاهده تراکنش های مالی</p>
       </router-link>
 
-      <router-link to="/FAQ_page" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/information.svg" alt="FAQ" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">سوالات متداول</p>
+      <router-link to="/FAQ_page" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/information.svg" alt="FAQ" class="icon-3">
+        <p class="font-3 font-bold text-black" >سوالات متداول</p>
       </router-link>
 
-      <router-link to="/rules_page" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/shield.svg" alt="Privecy" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">قوانین و مقررات</p>
+      <router-link to="/rules_page" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/shield.svg" alt="Privecy" class="icon-3">
+        <p class="font-3 font-bold text-black" >قوانین و مقررات</p>
       </router-link>
 
-      <router-link to="/about_us_page" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/about-us.svg" alt="About-us" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">درباره ما</p>
+      <router-link to="/about_us_page" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/about-us.svg" alt="About-us" class="icon-3">
+        <p class="font-3 font-bold text-black" >درباره ما</p>
       </router-link>
 
       <!-- خروج: اگر نیاز به لاگ‌اوت کدی داری -->
-      <div @click="logout" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center rounded-4 shadow">
-        <img src="../assets/img/Exit.svg" alt="Exit" class="icon-size-3">
-        <p class="font-4 font-bold mr-3">خروج از اپلیکیشن</p>
+      <div @click="logout" class="w-90 bg-white p-4 d-flex justify-content-start align-items-center gap-3 rounded-4 shadow">
+        <img src="../assets/img/Exit.svg" alt="Exit" class="icon-3">
+        <p class="font-3 font-bold text-black">خروج از اپلیکیشن</p>
       </div>
 
     </div>
@@ -101,10 +101,6 @@ function logout() {
 
 
 <style scoped>
-.RTl{
-  direction: rtl;
-}
-p{
-  color: black;
-}
+
+
 </style>

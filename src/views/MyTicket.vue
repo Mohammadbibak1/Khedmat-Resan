@@ -3,15 +3,15 @@
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
 
-    <div class="div-top-arrow bg-color max_width d-flex justify-content-end rounded-bottom-5">
+    <header class="div-top-arrow">
       <router-link
         :to="{ name: 'SupportPage'}"
         class="d-flex align-items-center text-decoration-none"
       >
-        <p class="font-4 font-bold text-white mr-3">تیکت های من</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-3 mr-3 font-bold text-white">تیکت های من</p>
       </router-link>
-    </div>
+    </header>
 
     <div style="margin-top: 7rem"></div>
 
@@ -26,29 +26,28 @@
         >
           <div class="w-100 d-flex justify-content-between align-items-center border-bottom p-3">
             <div>
-              <p class="font-bold font-4">{{ item.title }}</p>
+              <p class="font-bold font-3">{{ item.title }}</p>
             </div>
 
             <div class="d-flex column-gap-2">
-              <p class="font-4">{{ item.date }}</p>
+              <p class="font-4 font-normal">{{ item.date }}</p>
             </div>
           </div>
 
           <p class="w-100 font-4 my-4 mr-5 text-color-gray">{{ item.caption }}</p>
 
           <div
-            class="w-100 bg-lite-blue rounded-5 p-4 d-flex flex-column align-items-start row-gap-4"
+            class="w-100 bg-lite-color rounded-5 p-4 d-flex flex-column align-items-start row-gap-4"
           >
             <p class="font-bold text-end font-5">پاسخ پشتیبانی</p>
-            <hr class="hr-white" />
 
             <p
               v-if="item.answer && item.answer.length > 0 && item.answer[0].caption"
-              class="font-bold text-end font-5"
+              class="font-bold text-end font-3"
             >
               {{ item.answer[0].caption }}
             </p>
-            <p v-else class="text-end font-5">پاسخی درج نشده</p>
+            <p v-else class="text-end font-5 font-normal">پاسخی درج نشده</p>
           </div>
         </div>
       </div>
@@ -66,6 +65,11 @@
     <br>
     <br>
   </div>
+
+  <div>
+    <BottomNavigation v-model="activeIndex" :items="navItems" />
+  </div>
+
 </template>
 
 <script setup>
@@ -73,6 +77,7 @@ import axios from 'axios'
 import { SwalError } from '@/assets/js/MyJs.js'
 import { onMounted, ref } from 'vue'
 import LoadingJson from '@/components/LoadingJson.vue'
+import BottomNavigation from '@/components/BottomNavigation.vue'
 
 const url = localStorage.getItem('ProjectUrl')
 const apikey = localStorage.getItem('ApiKey')
@@ -107,6 +112,24 @@ async function SendFirstRequest() {
 onMounted(() => {
   SendFirstRequest()
 })
+
+const activeIndex = ref(1)  // پشتیبانی باید به طور پیش‌فرض فعال باشد
+
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
+
+const navItems = [
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
+  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
+]
+
+
 </script>
 
 <style scoped>

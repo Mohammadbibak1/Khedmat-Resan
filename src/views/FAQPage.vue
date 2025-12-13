@@ -2,13 +2,13 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="RTL">
-    <div class="div-top-arrow bg-color max_width rounded-bottom-5">
+    <div class="div-top-arrow">
       <router-link
         :to="{ name: 'UserArea' }"
         class="d-flex align-items-center text-decoration-none"
       >
-        <p class="font-4 font-bold text-white mr-3">سوالات متداول</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-3 font-bold text-white mr-3">سوالات متداول</p>
       </router-link>
     </div>
 
@@ -17,7 +17,7 @@
         <li v-for="(item, index) in data" :key="item.id">
           <label :for="'faq-' + item.id">
             {{ item.question }}
-            <span style="color: #0ba6ab">&#9662;</span>
+            <span style="color: var(--primary-color)">&#9662;</span>
           </label>
           <input type="radio" name="accordion" :id="'faq-' + item.id" :checked="index === 0" />
           <div class="content">
@@ -88,10 +88,11 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
+  font-family: "IRANSans", sans-serif;
   cursor: pointer;
-  color: #0ba6ab;
+  color: var(--primary-color);
 }
 #accordion label span {
   transform: rotate(90deg);
@@ -107,6 +108,8 @@ onMounted(() => {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s linear;
+  font-family: "IRANSans", sans-serif;
+  font-size: 1rem;
 }
 #accordion label + input[type='radio']:checked + .content {
   max-height: 400px;

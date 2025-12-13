@@ -2,18 +2,18 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="RTL">
-    <header class="div-top-arrow bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
+    <header class="div-top-arrow">
       <div
         @click.prevent="goBack"
         class="d-flex align-items-center text-decoration-none"
       >
-        <p class="font-4 font-bold text-white mr-3">قوانین و مقررات</p>
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-4 font-bold text-white mr-3">قوانین و مقررات</p>
       </div>
     </header>
 
     <div class="w-100 h-100 d-flex flex-column align-items-center p-3" style="margin-top: 7rem">
-      <div class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow-lite clean-content" v-html="cleanedData"></div>
+      <div class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow clean-content" v-html="cleanedData"></div>
     </div>
 
   </div>
@@ -88,7 +88,8 @@ function navigateTo(path) {
 
 .clean-content {
   font-family: 'IRANSans', sans-serif;
-  font-size: 14px;
+  font-size: 1.2rem;
+  font-weight: normal;
   color: #333;
   line-height: 2;
   text-align: justify;

@@ -3,9 +3,11 @@
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
     <div
-      class="div-top-arrow bg-color max_width d-flex justify-content-between rounded-bottom-5 shadow"
+      class="div-top-arrow justify-content-between"
     >
       <div class="d-flex align-items-center">
+
+        <p class="font-4 font-bold text-white">تعیین زمان و قیمت</p>
 
         <div
           @click="cancelAndGoBack"
@@ -13,11 +15,10 @@
           style="cursor: pointer"
         >
           <p class="text-white font-4 font-bold rounded-pill mr-2">انصراف</p>
-          <img src="../assets/img/Close.svg" alt="" class="icon-size-1" />
+          <img src="../assets/img/Close.svg" alt="" class="icon-4" />
         </div>
 
       </div>
-      <p class="font-4 font-bold text-white">تعیین زمان و قیمت</p>
     </div>
 
     <div class="w-100 d-flex flex-column align-items-center p-3 row-gap-4" style="margin-top: 8rem">
@@ -72,7 +73,7 @@
           <h4 class="font-bold">آدرس های من</h4>
 
           <router-link to="/add_address" tabindex="0">
-            <img src="../assets/img/add-blue-button.svg" alt="add" class="icon-size-3" />
+            <img src="../assets/img/add-blue-button.svg" alt="add" class="icon-3" />
             <span class="text-color-blue font-5 font-bold mr-3">افزودن آدرس</span>
           </router-link>
         </div>
@@ -106,7 +107,7 @@
                 <img
                   src="../assets/img/Trashbin.svg"
                   alt="حذف آدرس"
-                  class="icon-size-4 bg-white shadow p-2 rounded-pill cursor-pointer"
+                  class="icon-1 bg-white shadow p-2 rounded-pill cursor-pointer"
                 />
               </div>
             </div>
@@ -390,16 +391,16 @@ async function addOrder() {
 }
 
 ::v-deep(.vpd-header){
-  background-color: #f3656a !important;
+  background-color: var(--primary-color) !important;
   color: white !important;
 }
 
 ::v-deep(.vpd-icon-btn) {
-  background-color: #f3656a !important;
+  background-color: var(--primary-color) !important;
   color: white !important;
 }
 ::v-deep(.vpd-day-effect) {
-  background-color: #f3656a !important;
+  background-color: var(--primary-color) !important;
   color: white !important;
 }
 ::v-deep(.vpd-input-group) {
@@ -415,14 +416,14 @@ form-radio {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #f8565c;
+  border: 2px solid var(--primary-color);
   border-radius: 50%;
   outline: none;
   cursor: pointer;
 }
 
 .form-radio:checked {
-  background-color: #f8565c;
+  background-color: var(--primary-color);
 }
 
 .form-radio:disabled {
