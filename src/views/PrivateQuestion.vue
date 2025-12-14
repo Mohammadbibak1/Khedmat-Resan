@@ -5,13 +5,13 @@
   <div id="main" class="d-flex align-items-center flex-column RTL">
     <div
       class="div-top-arrow justify-content-between">
-      <p class="font-3 font-bold text-white mr-3">سوالات</p>
+      <p class="font-3 font-bold text-white" style="margin: 0 15px 0 0">سوالات</p>
       <router-link
         :to="{ name: 'SubcategoryPage', params: { id: parentId } }"
         class="d-flex align-items-center"
       >
-        <p class="text-white font-3 font-bold mr-2">انصراف</p>
-        <img src="../assets/img/Close.svg" alt="" class="icon-3" />
+        <p class="text-white font-3 font-bold" style="margin: 0 15px 0 0">انصراف</p>
+        <img src="../assets/img/Close.svg" alt="" class="w-25 mr-3" />
       </router-link>
 
     </div>
@@ -39,7 +39,7 @@
               :value="ans.id"
               v-model="userAnswers[qIndex].value"
             />
-            <span class="font-4 text-color-gray">{{ ans.answer }}</span>
+            <span class="font-4 font-normal text-color-gray">{{ ans.answer }}</span>
           </div>
           <span v-if="showErrors && !userAnswers[qIndex].value" class="text-danger font-4">
             لطفا یک گزینه را انتخاب کنید
@@ -57,7 +57,7 @@
             :key="aIndex"
             class="w-100 d-flex justify-content-between align-items-center py-2"
           >
-            <span class="font-4 text-color-gray">{{ ans.answer }}</span>
+            <span class="font-4 font-normal text-color-gray">{{ ans.answer }}</span>
             <label class="switch">
               <input
                 type="checkbox"
@@ -96,10 +96,31 @@
         بعدی
       </button>
     </div>
+
+    <div>
+      <BottomNavigation v-model="activeIndex" :items="navItems" />
+    </div>
+
   </div>
 </template>
 
 <script setup>
+
+import BottomNavigation from '@/components/BottomNavigation.vue'
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
+
+const navItems = [
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
+  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
+]
+
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import { SwalError } from '@/assets/js/MyJs.js'
@@ -310,14 +331,14 @@ onMounted(() => {
 }
 
 input:checked + .slider {
-  background-color: #0BA6AB;
+  background-color: var(--primary-color);
 }
 
 input:checked + .slider:before {
   transform: translateX(21px);
 }
 .req-field{
-  color: #0BA6AB;
+  color: var(--primary-color);
 }
 .disabled-btn {
   opacity: 0.6;

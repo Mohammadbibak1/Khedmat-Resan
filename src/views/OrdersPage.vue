@@ -5,9 +5,9 @@
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
     <div
-      class="div-top-arrow bg-color max_width d-flex justify-content-end rounded-bottom-5 shadow"
+      class="div-top-arrow"
     >
-      <p class="font-4 font-bold text-white mr-3">سفارشات</p>
+      <p class="font-3 font-bold text-white mr-3">سفارشات</p>
     </div>
 
     <div v-if="!loading && orders.length > 0"  class="w-100 d-flex flex-column align-items-center row-gap-4 p-4" style="margin-top: 8rem">
@@ -289,6 +289,9 @@
       </div>
     </div>
   </div>
+  <div>
+    <BottomNavigation v-model="activeIndex" :items="navItems" />
+  </div>
 </template>
 
 <script setup>
@@ -297,23 +300,19 @@ import { SwalError, SwalSuccess } from '@/assets/js/MyJs.js'
 import { onMounted, ref, watch } from 'vue'
 import LoadingJson from '@/components/LoadingJson.vue'
 import BottomNavigation from '@/components/BottomNavigation.vue'
-
-// buttom navigation
-const activeIndex = ref(2) // پشتیبانی باید به طور پیش‌فرض فعال باشد
-
-import homeIcon from '@/assets/img/home.svg'
-import customerIcon from '@/assets/img/customer.svg'
-import orderIcon from '@/assets/img/order.svg'
-import profileIcon from '@/assets/img/profile.svg'
-import router from '@/router/index.js'
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
 
 const navItems = [
-  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
   { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
   { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
-  { label: 'کاربری', icon: profileIcon, route: '/user_area' }
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
 ]
-// buttom navigation
 
 const loading = ref(false)
 const details_dialog = ref(false)

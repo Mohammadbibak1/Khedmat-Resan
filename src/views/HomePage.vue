@@ -2,7 +2,7 @@
   <LoadingJson :show="loading" />
   <div v-if="dialog" class="bg_dialog"></div>
 
-  <div class="d-flex flex-column justify-content-start p-3 row-gap-3" id="main" style="margin-top: 18rem">
+  <div class="d-flex flex-column justify-content-start p-3 row-gap-3" id="main" style="margin-top: 18rem;height: 100dvh">
 
     <header class="d-flex flex-column align-items-center justify-content-center">
       <img src="../../public/Logo-app.svg" alt="" class="logo" />

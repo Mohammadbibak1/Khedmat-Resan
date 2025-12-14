@@ -37,6 +37,7 @@ const app_version = ref('')
 const updating_version = ref(false)
 let tell = null
 
+
 async function SendFirstRequest() {
   const version_data = {
     apikey: apikey,

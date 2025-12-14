@@ -8,7 +8,7 @@
         class="d-flex align-items-center text-decoration-none"
       >
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
-        <p class="font-3 font-bold text-white mr-3">درباره ما</p>
+        <p class="font-3 font-bold text-white " style="margin: 0 15px 0 0">درباره ما</p>
       </router-link>
     </header>
 
@@ -16,6 +16,11 @@
       <div class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow clean-content" v-html="cleanedData"></div>
     </div>
   </div>
+
+  <div>
+    <BottomNavigation v-model="activeIndex" :items="navItems" />
+  </div>
+
 </template>
 
 <script setup>
@@ -62,6 +67,25 @@ async function SendFirstRequest() {
 onMounted(() => {
   SendFirstRequest()
 })
+
+const activeIndex = ref(0)
+
+import BottomNavigation from '@/components/BottomNavigation.vue'
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
+
+const navItems = [
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
+  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
+]
+
+
 </script>
 
 <style scoped>

@@ -39,6 +39,7 @@
         <button class="button-Default w-50 shadow font-3 mt-6" @click="register">ثبت نام</button>
       </div>
     </div>
+
   </div>
 </template>
 

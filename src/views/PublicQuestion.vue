@@ -2,36 +2,32 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
-    <div
-      class="div-top-arrow justify-content-between"
-    >
-      <div class="d-flex align-items-center">
 
-        <p class="font-4 font-bold text-white">تعیین زمان و قیمت</p>
+    <div class="div-top-arrow justify-content-between">
 
-        <div
-          @click="cancelAndGoBack"
-          class="d-flex align-items-center text-decoration-none"
-          style="cursor: pointer"
-        >
-          <p class="text-white font-4 font-bold rounded-pill mr-2">انصراف</p>
-          <img src="../assets/img/Close.svg" alt="" class="icon-4" />
-        </div>
-
+      <p class="font-4 font-bold text-white">تعیین زمان و قیمت</p>
+      <div
+        @click="cancelAndGoBack"
+        class="d-flex align-items-center text-decoration-none"
+        style="cursor: pointer"
+      >
+        <p class="text-white font-3 font-bold" style="margin: 0 15px 0 0">انصراف</p>
+        <img src="../assets/img/Close.svg" alt="" class="w-25 mr-3" />
       </div>
+
     </div>
 
     <div class="w-100 d-flex flex-column align-items-center p-3 row-gap-4" style="margin-top: 8rem">
       <div class="w-100 text-end mt-3">
-        <h2 class="font-3 font-bold">تاریخ حضور نیرو</h2>
 
+        <h2 class="font-3 font-bold">تاریخ حضور نیرو</h2>
         <date-picker
           v-model="date"
           format="YYYY/MM/DD"
           display-format="jYYYY/jMM/jDD"
           :editable="false"
           placeholder="انتخاب تاریخ"
-          class="w-100 "
+          class="w-100"
           :disabled-date="disabledDates"
         />
 
@@ -128,12 +124,12 @@
         class="w-100 shadow-lite rounded-5 p-4"
       ></textarea>
       <div class="w-90 d-flex justify-content-between mt-3">
-<!--        <button-->
-<!--          @click="addOrder"-->
-<!--          class="w-48 bg-color border-3 border-color-White rounded-pill text-white font-4 font-bold shadow p-3"-->
-<!--        >-->
-<!--          ثبت نهایی-->
-<!--        </button>-->
+        <!--        <button-->
+        <!--          @click="addOrder"-->
+        <!--          class="w-48 bg-color border-3 border-color-White rounded-pill text-white font-4 font-bold shadow p-3"-->
+        <!--        >-->
+        <!--          ثبت نهایی-->
+        <!--        </button>-->
         <button
           @click="addOrder"
           :disabled="loading"
@@ -142,14 +138,35 @@
           <span v-if="loading">در حال ثبت...</span>
           <span v-else>ثبت نهایی</span>
         </button>
-        <button @click="goBack" class="w-48 font-4 font-bold shadow bg-gradient-gray p-3 rounded-pill">قبلی</button>
-
+        <button
+          @click="goBack"
+          class="w-48 font-4 font-bold shadow bg-gradient-gray p-3 rounded-pill"
+        >
+          قبلی
+        </button>
       </div>
+    </div>
+    <div>
+      <BottomNavigation v-model="activeIndex" :items="navItems" />
     </div>
   </div>
 </template>
 
 <script setup>
+import BottomNavigation from '@/components/BottomNavigation.vue'
+import categoryicon from '@/assets/img/category.svg'
+import customerIcon from '@/assets/img/customer-service-_1_.svg'
+import homeIcon from '@/assets/img/home-_4_.svg'
+import orderIcon from '@/assets/img/list (1).svg'
+import profileIcon from '@/assets/img/user (2).svg'
+
+const navItems = [
+  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
+  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
+  { label: 'خانه', icon: homeIcon, route: '/home_page' },
+  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
+  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
+]
 import { useOrderFormStore } from '@/stores/useOrderFormStore'
 
 import { useRoute } from 'vue-router'
@@ -166,19 +183,17 @@ const parentId = route.params.parentId
 const loading = ref(false)
 const address = ref([])
 
-
 const orderFormStore = useOrderFormStore()
 const date = ref(orderFormStore.date)
 const selectedTimeSlot = ref(orderFormStore.selectedTimeSlot)
 const selectedAddressId = ref(orderFormStore.selectedAddressId)
-const caption =  ref(orderFormStore.caption)
+const caption = ref(orderFormStore.caption)
 
 // Watch to update the store
-watch(date, val => orderFormStore.date = val)
-watch(selectedTimeSlot, val => orderFormStore.selectedTimeSlot = val)
-watch(selectedAddressId, val => orderFormStore.selectedAddressId = val)
-watch(caption, val => orderFormStore.caption = val)
-
+watch(date, (val) => (orderFormStore.date = val))
+watch(selectedTimeSlot, (val) => (orderFormStore.selectedTimeSlot = val))
+watch(selectedAddressId, (val) => (orderFormStore.selectedAddressId = val))
+watch(caption, (val) => (orderFormStore.caption = val))
 
 // فراخوانی اطلاعات صفحه قبلی از پانیا
 import { useAnswerStore } from '@/stores/answerStore'
@@ -193,7 +208,7 @@ async function SendFirstRequest() {
   const sendData = {
     user_id: user_id,
     apikey: apikey,
-    action: 'show'
+    action: 'show',
   }
 
   loading.value = true
@@ -215,13 +230,12 @@ onMounted(() => {
   SendFirstRequest()
 })
 
-
 watch(date, (newVal) => {
   if (newVal) {
     const iranTime = getIranTime()
     console.log(
       'زمان دقیق ایران:',
-      iranTime.getHours() + ':' + String(iranTime.getMinutes()).padStart(2, '0')
+      iranTime.getHours() + ':' + String(iranTime.getMinutes()).padStart(2, '0'),
     )
 
     timeSlots.value.forEach((slot) => {
@@ -235,7 +249,7 @@ const timeSlots = ref([
   { id: 1, label: '08-12', startHour: 8 },
   { id: 2, label: '12-16', startHour: 12 },
   { id: 3, label: '16-20', startHour: 16 },
-  { id: 4, label: '20-24', startHour: 20 }
+  { id: 4, label: '20-24', startHour: 20 },
 ])
 const isToday = computed(() => {
   if (!date.value) return false
@@ -297,7 +311,7 @@ const deleteAddress = async (addressId) => {
         user_id: user_id,
         apikey: apikey,
         address_id: addressId,
-        action: 'delete'
+        action: 'delete',
       })
 
       if (response.data.status === 'ok') {
@@ -324,7 +338,7 @@ const selectAddress = (id) => {
 
 function cancelAndGoBack() {
   answerStore.clearAnswers()
-  orderFormStore.clear();
+  orderFormStore.clear()
 
   router.push({ name: 'SubcategoryPage', params: { id: parentId } })
 }
@@ -336,14 +350,13 @@ function goBack() {
 async function addOrder() {
   // بررسی پر بودن فیلدهای ضروری
   if (!selectedTimeSlot.value || !selectedAddressId.value || !date.value) {
-    SwalError('خطا!', 'لطفاً تمام فیلدها را پر کنید');
-    return;
+    SwalError('خطا!', 'لطفاً تمام فیلدها را پر کنید')
+    return
   }
 
-  const questions = answerStore.questions;
-  const service_id = answerStore.service_id;
-  const shamsiDate = moment(date.value).format('jYYYY/jMM/jDD');
-
+  const questions = answerStore.questions
+  const service_id = answerStore.service_id
+  const shamsiDate = moment(date.value).format('jYYYY/jMM/jDD')
 
   const send_data = {
     apikey: apikey,
@@ -354,34 +367,33 @@ async function addOrder() {
     time: selectedTimeSlot.value,
     address_id: parseInt(selectedAddressId.value),
     caption: caption.value,
-  };
-
-  console.log('در حال ارسال سفارش:', send_data);
-
-  loading.value = true;
-
-  try {
-    const response = await axios.post(url + 'add_order', send_data);
-
-    if (response.data.status === 'ok') {
-      loading.value = false;
-      orderFormStore.clear();
-
-      const order_number = response.data.order_number;
-
-      await SwalSuccess('ثبت موفق سفارش', `سفارش شماره ${order_number} با موفقیت ایجاد شد`, 5000);
-
-      router.push({ name: 'HomePage' });
-    } else {
-      SwalError('خطا!', response.data.message || 'مشکلی پیش آمد، مجدداً امتحان کنید');
-    }
-  } catch (error) {
-    console.error('خطا در ارسال سفارش:', error);
-    SwalError('خطا!', 'خطای ارتباط با سرور');
-  } finally {
-    loading.value = false;
   }
 
+  console.log('در حال ارسال سفارش:', send_data)
+
+  loading.value = true
+
+  try {
+    const response = await axios.post(url + 'add_order', send_data)
+
+    if (response.data.status === 'ok') {
+      loading.value = false
+      orderFormStore.clear()
+
+      const order_number = response.data.order_number
+
+      await SwalSuccess('ثبت موفق سفارش', `سفارش شماره ${order_number} با موفقیت ایجاد شد`, 5000)
+
+      router.push({ name: 'HomePage' })
+    } else {
+      SwalError('خطا!', response.data.message || 'مشکلی پیش آمد، مجدداً امتحان کنید')
+    }
+  } catch (error) {
+    console.error('خطا در ارسال سفارش:', error)
+    SwalError('خطا!', 'خطای ارتباط با سرور')
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
@@ -390,24 +402,28 @@ async function addOrder() {
   direction: rtl;
 }
 
-::v-deep(.vpd-header){
+::v-deep(.vpd-header) {
   background-color: var(--primary-color) !important;
   color: white !important;
+  font-family: var(--font-normal);
 }
 
 ::v-deep(.vpd-icon-btn) {
   background-color: var(--primary-color) !important;
-  color: white !important;
+  color: #df1616 !important;
 }
+
 ::v-deep(.vpd-day-effect) {
   background-color: var(--primary-color) !important;
   color: white !important;
 }
+
 ::v-deep(.vpd-input-group) {
-height: 4rem!important;
+  height: 4rem !important;
 }
+
 ::v-deep(.form-control) {
-  box-shadow: 0px 5px 8px 0 rgba(189,227,228,37);
+  box-shadow: 0px 5px 8px 0 rgba(189, 227, 228, 37);
   border-radius: 9px;
 }
 

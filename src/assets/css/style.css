@@ -175,7 +175,6 @@
 
 /******* default *******/
 
-/* موبایل و دسکتاپ: عادی */
 body {
   width: 100%;
   margin: 0;
@@ -184,7 +183,7 @@ body {
   font-size: var(--font-size-md);
 }
 
-/* فقط وسط‌چین کردن اپ روی دسکتاپ */
+
 @media (min-width: 1024px) {
   #app {
     margin: 0 auto;
@@ -288,6 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bottom-navigation-title {
+  font-family: IRANSans, sans-serif;
   font-size: var(--font-size-lg);
   color: var(--secondary-color);
   margin-top: 5px;
@@ -676,9 +676,10 @@ button {
 
 .support-fixed {
   width: 50%;
+  max-width: var(--app-max-width);
   position: fixed;
   bottom: 8rem;
-  left: 1.5rem;
+  left: 0.8rem;
   z-index: 5;
   display: flex;
   gap: 0.5rem;

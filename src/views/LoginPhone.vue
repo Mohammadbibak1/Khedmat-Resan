@@ -3,7 +3,7 @@
 
   <div
     id="main"
-    class="w-100 bg-color d-flex flex-column align-items-center justify-content-between p-0"
+    class="w-100 bg-color d-flex flex-column align-items-center justify-content-between p-0" style="height: 100dvh"
   >
     <section
       class="w-100 h-50 bg-lite-color d-flex justify-content-center align-items-center"
@@ -20,7 +20,7 @@
     <div
       class="w-100 h-50 d-flex flex-column justify-content-center align-items-center position-relative bg-circle"
     >
-      <div
+      <section
         class="w-80 p-5 bg-color rounded-5 shadow-custom d-flex flex-column align-items-center row-gap-5 position-absolute"
         style="top: -3rem"
       >
@@ -47,8 +47,11 @@
           <input v-model="check_rules" id="num" type="checkbox" />
         </div>
         <button @click="SendData" class="w-65">دریافت کد فعال سازی</button>
-      </div>
+      </section>
     </div>
+
+
+
   </div>
 </template>
 

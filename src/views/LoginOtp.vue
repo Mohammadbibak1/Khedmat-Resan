@@ -1,62 +1,70 @@
 <template>
   <LoadingJson :show="loading" />
 
-  <div class=" d-flex flex-column align-items-center justify-content-center" id="main">
-    <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-      <img src="../../src/assets/img/logo.png" alt="logo" class="img-login" />
+  <div
+    id="main"
+    class="w-100 bg-color d-flex flex-column align-items-center justify-content-between p-0"
+    style="height: 100svh"
+  >
+    <section
+      class="w-100 h-50 bg-lite-color d-flex justify-content-center align-items-center"
+      style="background-color: #5263c5"
+    >
+      <img
+        src="../../public/Logo-app.svg"
+        alt="logo"
+        class="img-login w-40 rounded-pill"
+        style="background-color: #cbd3ff4a"
+      />
+    </section>
 
-      <div class="w-80 bg-color p-5 rounded-5 shadow-custom d-flex flex-column align-items-center">
+    <div
+      class="w-100 h-50 d-flex flex-column justify-content-center align-items-center position-relative bg-circle"
+    >
+      <section
+        class="w-80 p-5 bg-color rounded-5 shadow-custom d-flex flex-column align-items-center row-gap-5 position-absolute"
+        style="top: -3rem"
+      >
         <label class="text-white font-3 font-bold text-center"
-        >کد ارسال شده به شماره همراه را وارد کنید</label
+          >کد ارسال شده به شماره همراه را وارد کنید</label
         >
+        <div class="otp-ltr" dir="ltr">
+          <v-otp-input
+            ref="otpInput"
+            input-classes="otp-input"
+            :conditionalClass="['one', 'two', 'three', 'four']"
+            separator=" "
+            inputType="tel"
+            :num-inputs="4"
+            v-model:value="bindValue"
+            :should-auto-focus="true"
+            :should-focus-order="true"
+            @on-change="handleOnChange"
+            @on-complete="handleOnComplete"
+            :placeholder="[' ', ' ', ' ', ' ']"
+          />
+        </div>
 
-        <v-otp-input
-          ref="otpInput"
-          input-classes="otp-input"
-          :conditionalClass="['one', 'two', 'three', 'four']"
-          separator=" "
-          inputType="tel"
-          :num-inputs="4"
-          v-model:value="bindValue"
-          :should-auto-focus="true"
-          :should-focus-order="true"
-          @on-change="handleOnChange"
-          @on-complete="handleOnComplete"
-          :placeholder="[' ', ' ', ' ', ' ']"
-        />
-
-        <div class="d-flex align-items-center gap-3 my-3">
-          <a
-            href="#"
-            @click.prevent="resendOtp"
-            :class="{ 'disabled-link': resendDisabled }"
-          >
+        <div class="d-flex align-items-center gap-3 my-3 font-bold font-normal">
+          <a href="#" @click.prevent="resendOtp" :class="{ 'disabled-link': resendDisabled }">
             {{ resendDisabled ? `ارسال مجدد (${countdown})` : 'ارسال مجدد' }}
           </a>
           <hr class="hr-vertical" />
-          <router-link :to="{name:'LoginPhone'}" class="otp_link">ویرایش شماره</router-link>
+          <router-link :to="{ name: 'LoginPhone' }" class="otp_link">ویرایش شماره</router-link>
         </div>
 
-        <button
-          @click="SendOtp"
-          class="w-65 button-Default shadow mt-3"
-          :disabled="otpExpired"
-        >
+        <button @click="SendOtp" class="w-65 button-Default shadow mt-3" :disabled="otpExpired">
           ارسال کد فعال سازی
         </button>
-      </div>
+      </section>
+    </div>
 
-      <div class="w-90 d-flex RTL mt-6">
-        <div class="w-50"></div>
-        <div class="w-50 d-flex justify-content-end">
-          <a :href="`tel:${support}`" class="button-Support shadow text-center w-70 ml-1">پشتیبانی</a>
-          <button class="button-Support shadow pulse-circle">
-            <img src="../../src/assets/img/phone.svg" alt="" class="icon-size-3" />
-          </button>
-        </div>
-      </div>
-
-
+    <!-- دکمه پشتیبانی -->
+    <div class="support-fixed">
+      <a :href="`tel:${support}`" class="w-65 button-Support text-center">پشتیبانی</a>
+      <button class="button-Support shadow pulse-circle icon-size-2">
+        <img src="../../src/assets/img/phone.svg" alt="" class="icon-2" />
+      </button>
     </div>
   </div>
 </template>
@@ -109,7 +117,8 @@ function resendOtp() {
   }
 
   loading.value = true
-  axios.post(`${url}login_phone`, data)
+  axios
+    .post(`${url}login_phone`, data)
     .then((response) => {
       loading.value = false
       const res = response.data
@@ -128,7 +137,7 @@ function resendOtp() {
 
 function SendOtp() {
   if (otpExpired.value) {
-    SwalError("خطا!", "کد منقضی شده است. لطفاً مجدداً دریافت کنید.", "error", false)
+    SwalError('خطا!', 'کد منقضی شده است. لطفاً مجدداً دریافت کنید.', 'error', false)
     return
   }
   console.log(phone)
@@ -141,32 +150,33 @@ function SendOtp() {
   }
 
   loading.value = true
-  axios.post(url + 'login_otp', mydata).then((response) => {
-    loading.value = false
-    var res = response.data
-    console.log(res)
+  axios
+    .post(url + 'login_otp', mydata)
+    .then((response) => {
+      loading.value = false
+      var res = response.data
+      console.log(res)
 
-    if (res.status == 'ok') {
-      if (res.event === 'user exist') {
-        localStorage.setItem('user_id', res.user_id)
-        router.push({ name: 'HomePage' })
+      if (res.status == 'ok') {
+        if (res.event === 'user exist') {
+          localStorage.setItem('user_id', res.user_id)
+          router.push({ name: 'HomePage' })
+        } else {
+          router.push({ name: 'SignupPage', params: { phone: phone } })
+        }
       } else {
-        router.push({ name: 'SignupPage', params: { phone: phone } })
+        SwalError('خطا!', 'کد یک بار مصرف صحیح نمی باشد', 'error', false)
       }
-    } else {
-      SwalError("خطا!", "کد یک بار مصرف صحیح نمی باشد", "error", false)
-    }
-  }).catch(() => {
-    loading.value = false
-    console.log('error')
-  })
+    })
+    .catch(() => {
+      loading.value = false
+      console.log('error')
+    })
 }
-
 
 onMounted(() => {
   startTimer()
-});
-
+})
 
 function handleOnComplete() {
   SendOtp()
@@ -216,7 +226,6 @@ const handleOnChange = (value) => {
   }
 }
 
-
 @keyframes shake {
   0%,
   100% {
@@ -232,9 +241,11 @@ const handleOnChange = (value) => {
     transform: translateY(-1px);
   }
 }
+
 .img-login {
   width: 20rem;
 }
+
 /* استایل کلی همه inputها */
 ::v-deep(.otp-input) {
   width: 3rem;
@@ -242,7 +253,7 @@ const handleOnChange = (value) => {
   border-radius: 50%;
   margin: 10px 10px;
   padding: 5px;
-  font-size: 15px;
+  font-size: 17px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   text-align: center;
   background-color: white;
@@ -267,7 +278,7 @@ const handleOnChange = (value) => {
   font-weight: 600;
 }
 
-.otp_link{
+.otp_link {
   color: white;
 }
 
@@ -276,4 +287,12 @@ const handleOnChange = (value) => {
   pointer-events: none;
   cursor: default;
 }
+.otp-ltr {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+
 </style>
+
+<script setup lang="ts"></script>
