@@ -2,18 +2,18 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="RTL">
-    <header class="div-top-arrow bg-color max_width d-flex justify-content-end w-100 rounded-bottom-5">
-      <div
-        @click.prevent="goBack"
-        class="d-flex align-items-center text-decoration-none"
-      >
-        <p class="font-4 font-bold text-white mr-3">حریم خصوصی</p>
+    <header class="div-top-arrow">
+      <div @click.prevent="goBack" class="d-flex align-items-center text-decoration-none">
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
+        <p class="font-3 font-bold text-white" style="margin: 0 5px">حریم خصوصی</p>
       </div>
     </header>
 
     <div class="w-100 h-100 d-flex flex-column align-items-center p-3" style="margin-top: 7rem">
-      <div class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow-lite clean-content" v-html="cleanedData"></div>
+      <div
+        class="w-100 h-100 bg-white border-2 rounded-4 p-4 font-4 shadow-lite clean-content"
+        v-html="cleanedData"
+      ></div>
     </div>
   </div>
   <div>
@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-
 import BottomNavigation from '@/components/BottomNavigation.vue'
 import categoryicon from '@/assets/img/category.svg'
 import customerIcon from '@/assets/img/customer-service-_1_.svg'
@@ -55,7 +54,7 @@ const router = useRouter()
 const cleanedData = computed(() => {
   const parser = new DOMParser()
   const doc = parser.parseFromString(data.value, 'text/html')
-  doc.body.querySelectorAll('*').forEach(el => {
+  doc.body.querySelectorAll('*').forEach((el) => {
     el.removeAttribute('style')
   })
   return doc.body.innerHTML
@@ -87,7 +86,7 @@ function goBack() {
   if (window.history.length > 1) {
     router.back()
   } else {
-    router.push('/')  // در صورت نداشتن تاریخچه، به صفحه اصلی هدایت می‌شود
+    router.push('/') // در صورت نداشتن تاریخچه، به صفحه اصلی هدایت می‌شود
   }
 }
 </script>

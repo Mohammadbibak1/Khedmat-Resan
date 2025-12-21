@@ -4,15 +4,10 @@ import LoginOtp from '../views/LoginOtp.vue'
 import LoginPhone from '../views/LoginPhone.vue'
 import SignupPage from '@/views/SignupPage.vue'
 import HomePage from '@/views/HomePage.vue'
-import SubcategoryPage from '@/views/SubcategoryPage.vue'
-import PrivateQuestion from '@/views/PrivateQuestion.vue'
-import PublicQuestion from '@/views/PublicQuestion.vue'
-import AddAddress from '@/views/AddAddress.vue'
 import SupportPage from '@/views/SupportPage.vue'
 import MyTicket from '@/views/MyTicket.vue'
 import UserArea from '@/views/UserArea.vue'
 import MyProfile from '@/views/MyProfile.vue'
-import MyAddress from '@/views/MyAddress.vue'
 import MyWallet from '@/views/MyWallet.vue'
 import MyCart from '@/views/MyCart.vue'
 import FAQPage from '@/views/FAQPage.vue'
@@ -20,7 +15,7 @@ import RulesPage from '@/views/RulesPage.vue'
 import AboutUsPage from '@/views/AboutUsPage.vue'
 import PrivacyPage from '@/views/PrivacyPage.vue'
 import OrdersPage from '@/views/OrdersPage.vue'
-import ShowFactor from '@/views/ShowFactor.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,29 +46,6 @@ const router = createRouter({
       component: HomePage,
     },
     {
-      path: '/subcategory_page/:id',
-      name: 'SubcategoryPage',
-      component: SubcategoryPage,
-    },
-
-    {
-      path: '/private_question/:id/:parentId',
-      name: 'PrivateQuestion',
-      component: PrivateQuestion,
-    },
-    {
-      path: '/public_question/:id/:parentId',
-      name: 'PublicQuestion',
-      component: PublicQuestion,
-    },
-
-    {
-      path: '/add_address',
-      name: 'AddAddress',
-      component: AddAddress,
-    },
-
-    {
       path: '/support_page',
       name: 'SupportPage',
       component: SupportPage,
@@ -95,12 +67,6 @@ const router = createRouter({
       path: '/my_profile',
       name: 'MyProfile',
       component: MyProfile,
-    },
-
-    {
-      path: '/my_address',
-      name: 'MyAddress',
-      component: MyAddress,
     },
 
     {
@@ -140,12 +106,6 @@ const router = createRouter({
       path: '/orders_page',
       name: 'OrdersPage',
       component: OrdersPage,
-    },
-
-    {
-      path: '/show_factor/:order_id/',
-      name: 'ShowFactor',
-      component: ShowFactor,
     },
 
   ],

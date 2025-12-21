@@ -2,17 +2,41 @@
   <LoadingJson :show="loading" />
   <div v-if="dialog" class="bg_dialog"></div>
 
-  <div class="d-flex flex-column justify-content-start p-3 row-gap-3" id="main" style="margin-top: 18rem;height: 100dvh">
-
+  <div
+    class="d-flex flex-column justify-content-start p-3 row-gap-3"
+    id="main"
+    style="margin-top: 18rem; height: 100dvh"
+  >
     <header class="d-flex flex-column align-items-center justify-content-center">
-      <img src="../../public/Logo-app.svg" alt="" class="logo" />
-      <input
-        type="search"
-        v-model="searchQuery"
-        placeholder="به چه خدمتی نیاز دارید؟"
-        class="w-100 p-3 rounded-pill bg-gray font-"
-        @keyup.enter="showSearchResults"
-      />
+
+      <div class="w-100 d-flex justify-content-between align-items-center ">
+
+        <div class="">
+          <img src="../assets/img/yaro.svg" alt="" class="profile-avatar">
+          <span class="font-3 text-white font-bold">محمد بی باک</span>
+        </div>
+
+        <span class="text-white font-3 font-bold">
+          <span class="text-color-green">1.000.000</span>
+          تومان
+        </span>
+
+      </div>
+
+      <div class="w-100 bg-white d-flex justify-content-between align-items-center p-3 rounded-3 shadow" style="margin-bottom: -1.5rem">
+        <span class="font-4 font-bold">گزارش این ماه</span>
+        <span class="font-4 font-bold text-center border-dotted-custom w-50">
+          تعداد سفارش
+          <br>
+          <span class="text-color-green">10</span>
+        </span>
+        <span class="font-4 font-bold text-center">
+          مبلغ
+          <br>
+          <span class="text-color-green">10.000.000</span>
+        </span>
+      </div>
+
     </header>
 
     <section class="w-100 slider-row">
@@ -28,33 +52,48 @@
       </Carousel>
     </section>
 
-    <section class="w-100 d-flex justify-content-start align-items-center p-3 column-gap-3">
-      <img src="../assets/img/open-menu%20(1).svg" alt="" class="icon-3" />
-      <h2 class="font-2">خدمات</h2>
-    </section>
-
     <!--    /********************** service boxes ***********************/-->
 
-    <div class="w-100 d-flex justify-content-start flex-wrap gap-2">
-      <div class="custom-card" v-for="item in category" :key="item.id" @click="goToSubService(item.id)">
-        <img :src="item.pic" alt="" class="custom-img-style" />
-        <h3 class="w-100 text-center text-color-primary font-3 font-bold">{{ item.name }}</h3>
+    <div class="w-100 d-flex flex-column align-items-center row-gap-3 ">
+
+      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+        <div>
+          <img src="../assets/img/clipboard%20(5).svg" alt="" class="icon-1">
+          <span class="font-bold font-4 mr-3">سفارشات جدید</span>
+        </div>
+        <img src="../assets/img/back.svg" alt="" class="icon-5">
       </div>
+      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+        <div>
+          <img src="../assets/img/project-management%20(1)%20(1).svg" alt="" class="icon-1 ">
+          <span class="font-bold font-4 mr-3">سفارشات تایید شده (توسط شما)</span>
+        </div>
+        <img src="../assets/img/back.svg" alt="" class="icon-5">
+      </div>
+      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+        <div>
+          <img src="../assets/img/Group%202761.svg" alt="" class="icon-1">
+          <span class="font-bold font-4 mr-3">سفارشات پایان یافته</span>
+        </div>
+        <img src="../assets/img/back.svg" alt="" class="icon-5">
+      </div>
+      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+        <div>
+          <img src="../assets/img/transaction.svg" alt="" class="icon-1">
+          <span class="font-bold font-4 mr-3">تراکنش ها</span>
+        </div>
+        <img src="../assets/img/back.svg" alt="" class="icon-5">
+      </div>
+
     </div>
-
-
 
     <!-- دکمه پشتیبانی -->
     <div class="support-fixed">
-      <a :href="`tel:${support}`" class="w-65 button-Support text-center"
-      >پشتیبانی</a
-      >
+      <a :href="`tel:${support}`" class="w-65 button-Support text-center">پشتیبانی</a>
       <button class="button-Support shadow pulse-circle icon-size-2">
         <img src="../../src/assets/img/phone.svg" alt="" class="icon-2" />
       </button>
     </div>
-
-
 
     <!--    /********************** service boxes ***********************/-->
 
@@ -155,17 +194,13 @@ const description = ref(null)
 
 const activeIndex = ref(0)
 
-import categoryicon from '@/assets/img/category.svg'
 import customerIcon from '@/assets/img/customer-service-_1_.svg'
 import homeIcon from '@/assets/img/home-_4_.svg'
-import orderIcon from '@/assets/img/list (1).svg'
 import profileIcon from '@/assets/img/user (2).svg'
 
 const navItems = [
-  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
   { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
   { label: 'خانه', icon: homeIcon, route: '/home_page' },
-  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
   { label: 'کاربری', icon: profileIcon, route: '/user_area' },
 ]
 
@@ -487,8 +522,6 @@ function truncateName(name) {
   --vc-pgn-height: 5px;
   --vc-pgn-width: 5px;
 }
-
-
 
 /* لرزش */
 @keyframes shake {

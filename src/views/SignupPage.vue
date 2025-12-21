@@ -1,44 +1,90 @@
 <template>
   <div class="bg-main d-flex flex-column align-items-center justify-content-center" id="main">
-    <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+    <header class="div-top-arrow">
+      <p class="font-3 font-bold text-white" style="margin: 0 5px">ثبت نام</p>
+    </header>
 
-      <div class="w-80 bg-color p-4 rounded-5 shadow-custom d-flex flex-column align-items-center">
-        <label class="text-white font-2 font-bold text-center">ثبت نام</label>
+    <main class="w-100 d-flex flex-column row-gap-5 p-3" style="margin-top: 10rem">
 
-        <div class="w-100 d-flex flex-column mt-3">
-          <label class="font-4 font-bold text-white" for="name">نام ونام خانوادگی</label>
-          <input v-model="name" id="name" type="text" class="p-3 shadow mt-3" />
-        </div>
-
-        <div class="w-100 mt-3 d-flex justify-content-between">
-          <div class="w-48 d-flex flex-column">
-            <label class="font-4 font-bold text-white">شهر</label>
-            <select v-model="city_id" name="city" id="city" class="p-3 shadow mt-3">
-              <option v-for="city in cities" :key="city.id" :value="city.id">
-                {{ city.name }}
-              </option>
-            </select>
-          </div>
-
-          <div class="w-48 d-flex flex-column">
-            <label class="font-4 font-bold text-white">استان</label>
-            <select
-              v-model="state_id"
-              name="state"
-              id="state"
-              class="p-3 shadow mt-3"
-              @change="loadCities"
-            >
-              <option v-for="state in states" :key="state.id" :value="state.id">
-                {{ state.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <button class="button-Default w-50 shadow font-3 mt-6" @click="register">ثبت نام</button>
+      <div class="w-100">
+        <label for="" class="w-100 font-4 font-bold mb-3"> نام و نام خانوادگی </label>
+        <input type="text" name="" id="" class="w-100 shadow"/>
       </div>
-    </div>
+
+      <div class="w-100">
+        <label for="" class="w-100 font-4 font-bold mb-3"> شماره همراه </label>
+        <input type="tel" name="" id="" class="w-100 shadow" placeholder="09130000000"/>
+      </div>
+
+      <div class="w-100">
+        <label for="" class="w-100 font-4 font-bold mb-3"> کد ملی </label>
+        <input type="number" name="" id="" class="w-100 shadow"/>
+      </div>
+
+      <div class="w-100 d-flex justify-content-between">
+
+        <div class="w-48">
+          <label for="" class="w-100 font-4 font-bold"> استان </label>
+          <select class="w-100 shadow">
+            <option selected disabled>انتخاب</option>
+            <option>خوزستان</option>
+            <option>اصفهان</option>
+          </select>
+        </div>
+        <div class="w-48">
+          <label for="" class="w-100 font-4 font-bold"> شهر </label>
+          <select class="w-100 shadow">
+            <option selected disabled>انتخاب</option>
+            <option>اینجا</option>
+            <option>اونجا</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="w-100">
+        <label for="" class="w-100 font-4 font-bold mb-3"> آدرس محل سکونت </label>
+        <textarea class="w-100 shadow" rows="7"></textarea>
+      </div>
+
+      <div class="w-100">
+          <label for="" class="w-100 font-4 font-bold"> دسته بندی خدمت </label>
+          <select class="w-100 shadow">
+            <option selected disabled>انتخاب</option>
+            <option>این </option>
+            <option>اون</option>
+          </select>
+      </div>
+
+      <div class="w-100 d-flex flex-column row-gap-3">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <label class="font-5 font-bold">عکس پروفایل</label>
+          <input type="file" name="" id="">
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <label class="font-5 font-bold">گواهی عدم سو پیشینه</label>
+          <input type="file" name="" id="">
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <label class="font-5 font-bold">گواهی فنی حرفه ای یا شغلی</label>
+          <input type="file" name="" id="">
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <label class="font-5 font-bold">عکس روی کارت ملی</label>
+          <input type="file" name="" id="">
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <label class="font-5 font-bold">عکس کارت ملی روبه روی صورت</label>
+          <input type="file" name="" id="">
+        </div>
+
+      </div>
+
+
+      <button class="">ثبت نام</button>
+    </main>
+
 
   </div>
 </template>
@@ -106,13 +152,11 @@ function register() {
         SwalSuccess('تبریک', 'ثبت نام شما با موفقیت انجام شد')
         localStorage.setItem('user_id', res.user_id)
         router.push({ name: 'HomePage' })
-
       } else {
         if (res.event == 'user exist') {
           SwalError('خطا!', 'شما با این شماره قبلا ثبت نام کرده اید', 'error', false)
-        }else{
+        } else {
           SwalError('خطا!', 'متاسفانه ثبت نام شما با مشکل مواجه شد', 'error', false)
-
         }
       }
     })

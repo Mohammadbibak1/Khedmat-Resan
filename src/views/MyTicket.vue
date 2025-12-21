@@ -2,20 +2,19 @@
   <LoadingJson :show="loading" />
 
   <div id="main" class="d-flex align-items-center flex-column RTL">
-
     <header class="div-top-arrow">
       <router-link
-        :to="{ name: 'SupportPage'}"
+        :to="{ name: 'SupportPage' }"
         class="d-flex align-items-center text-decoration-none"
       >
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
-        <p class="font-3 mr-3 font-bold text-white">تیکت های من</p>
+        <p class="font-3 font-bold text-white" style="margin: 0 5px">تیکت های من</p>
       </router-link>
     </header>
 
     <div style="margin-top: 7rem"></div>
 
-    <div v-if="!loading && show_ticket.length > 0"  class="w-100">
+    <div v-if="!loading && show_ticket.length > 0" class="w-100">
       <div
         v-for="item in show_ticket"
         :key="item.id"
@@ -61,32 +60,15 @@
       <p class="font-bold text-color-gray mt-3">تیکتی وجود ندارد</p>
     </div>
 
-    <br>
-    <br>
-    <br>
-  </div>
-
-  <div>
-    <BottomNavigation v-model="activeIndex" :items="navItems" />
+    <br />
+    <br />
+    <br />
   </div>
 
 </template>
 
 <script setup>
 
-import categoryicon from '@/assets/img/category.svg'
-import customerIcon from '@/assets/img/customer-service-_1_.svg'
-import homeIcon from '@/assets/img/home-_4_.svg'
-import orderIcon from '@/assets/img/list (1).svg'
-import profileIcon from '@/assets/img/user (2).svg'
-
-const navItems = [
-  { label: 'دسته بندی', icon: categoryicon, route: '/home_page' },
-  { label: 'پشتیبانی', icon: customerIcon, route: '/support_page' },
-  { label: 'خانه', icon: homeIcon, route: '/home_page' },
-  { label: 'سفارشات', icon: orderIcon, route: '/orders_page' },
-  { label: 'کاربری', icon: profileIcon, route: '/user_area' },
-]
 
 import axios from 'axios'
 import { SwalError } from '@/assets/js/MyJs.js'
@@ -94,12 +76,11 @@ import { onMounted, ref } from 'vue'
 import LoadingJson from '@/components/LoadingJson.vue'
 import BottomNavigation from '@/components/BottomNavigation.vue'
 
-
 const url = localStorage.getItem('ProjectUrl')
 const apikey = localStorage.getItem('ApiKey')
 const user_id = localStorage.getItem('user_id')
 const loading = ref(false)
-const show_ticket=ref([])
+const show_ticket = ref([])
 async function SendFirstRequest() {
   const send_date = {
     user_id: user_id,
@@ -129,8 +110,7 @@ onMounted(() => {
   SendFirstRequest()
 })
 
-const activeIndex = ref(1)  // پشتیبانی باید به طور پیش‌فرض فعال باشد
-
+const activeIndex = ref(1) // پشتیبانی باید به طور پیش‌فرض فعال باشد
 </script>
 
 <style scoped>

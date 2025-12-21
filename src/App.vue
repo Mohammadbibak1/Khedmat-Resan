@@ -1,5 +1,4 @@
 <script setup>
-
 import { Capacitor } from '@capacitor/core'
 import { App } from '@capacitor/app'
 import { StatusBar } from '@capacitor/status-bar'
@@ -15,7 +14,6 @@ if (Capacitor.getPlatform() !== 'web') {
 }
 
 App.addListener('backButton', async () => {
-
   const currentComponent = route.name
   if (
     currentComponent === 'LoginPhone' ||
@@ -23,29 +21,21 @@ App.addListener('backButton', async () => {
     currentComponent === 'SighupPage' ||
     currentComponent === 'HomePage'
   ) {
-    SwalConfirm(
-      "آیا میخواهید از برنامه خارج شوید؟",
-      "",
-      "بله",
-      "انصراف",
-      () => {
-        App.exitApp()  // خروج از اپلیکیشن
-      }
-    )
-
-  }else if (
+    SwalConfirm('آیا میخواهید از برنامه خارج شوید؟', '', 'بله', 'انصراف', () => {
+      App.exitApp() // خروج از اپلیکیشن
+    })
+  } else if (
     currentComponent === 'SupportPage' ||
     currentComponent === 'OrdersPage' ||
     currentComponent === 'UserArea' ||
     currentComponent === 'SubcategoryPage'
-  ){
+  ) {
     await router.push({ name: 'HomePage' })
-
-    } else if (currentComponent === 'requestNew') {
+  } else if (currentComponent === 'requestNew') {
     // نادیده بگیر (کار خاصی نمی‌کنی)
     return
   } else {
-    router.back()  // برگشت به صفحه قبلی
+    router.back() // برگشت به صفحه قبلی
   }
 })
 </script>

@@ -11,7 +11,7 @@
     </div>
 
     <div class="w-100 d-flex flex-column align-items-center mb-3">
-      <span class="font-4 font-bold text-white">نسخه کاربر</span>
+      <span class="font-4 font-bold text-white">نسخه استاد کار</span>
       <span class="font-4 font-bold text-white">{{ appVersion }}</span>
     </div>
   </div>
@@ -36,7 +36,6 @@ const loading = ref(false)
 const app_version = ref('')
 const updating_version = ref(false)
 let tell = null
-
 
 async function SendFirstRequest() {
   const version_data = {
@@ -124,6 +123,4 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
