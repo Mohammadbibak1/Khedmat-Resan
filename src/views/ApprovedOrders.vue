@@ -7,7 +7,7 @@
     <header class="div-top-arrow">
       <div @click.prevent="goBack" class="d-flex align-items-center text-decoration-none">
         <img class="svg-back" src="../assets/img/arrow-right.svg" alt="" />
-        <p class="font-4 font-bold text-white" style="margin: 0 15px 0 0">سفارشات جدید</p>
+        <p class="font-4 font-bold text-white" style="margin: 0 15px 0 0">سفارشات تایید شده</p>
       </div>
     </header>
 
@@ -20,9 +20,9 @@
           </div>
 
           <button
-            class="w-40 button-status rounded-3 p-2 bg-warning rounded-3 border-0 font-5"
+            class="w-40 button-status rounded-3 p-2 bg-success rounded-3 border-0 font-5"
           >
-            تایید نشده توسط استاد کار
+            پذیرفته شده
           </button>
         </div>
 
@@ -37,12 +37,27 @@
             <p class="font-5 font-bold text-color-gray">{{ item.date }}</p>
             <p class="font-5 font-bold text-color-gray">{{ item.time }}</p>
           </div>
-          <div class="d-flex justify-content-start align-items-center column-gap-3">
-            <img src="../assets/img/user%20(5).svg" alt="calender" class="icon-3" />
-            <p class="font-4 font-bold">سفارش دهنده :</p>
-            <p class="font-5 font-bold text-color-gray">
-              {{ item.address }}
-            </p>
+          <div class="d-flex justify-content-between align-items-start column-gap-3">
+            <div class="d-flex column-gap-3">
+              <img src="../assets/img/user%20(5).svg" alt="calender" class="icon-3" />
+              <p class="font-4 font-bold">سفارش دهنده :</p>
+              <p class="font-5 font-bold text-color-gray">
+                {{ item.address }}
+              </p>
+            </div>
+            <img src="../assets/img/call.svg" class="icon-3 ">
+          </div>
+
+
+          <div class="d-flex justify-content-between align-items-start column-gap-3">
+            <div class="d-flex column-gap-3">
+              <img src="../assets/img/user%20(5).svg" alt="calender" class="icon-3" />
+              <p class="font-4 font-bold">ادرس سفارش :</p>
+              <p class="font-5 font-bold text-color-gray">
+                {{ item.address }}
+              </p>
+            </div>
+            <img src="../assets/img/loc.svg" class="icon-3 ">
           </div>
 
           <div class="d-flex justify-content-start align-items-center column-gap-3">
@@ -126,7 +141,7 @@
 
           <button
             @click="showCancleDialog(item.id)"
-            class="w-35 button-Cancel p-3 text-white shadow-lite bg-success"
+            class="w-35 bg-danger p-3 text-white shadow-lite bg-success"
             v-if="item.cancle_btn == 1"
           >
             لغو سفارش
@@ -134,11 +149,11 @@
 
           <button
             class="w-35 p-3 text-white border-0 rounded-pill shadow-lite"
-            style="background-color: #13e661"
+            style="background-color: deepskyblue"
             v-if="item.is_pay_btn == 1"
             @click="goToShowFactor(item.id)"
           >
-            پرداخت سفارش
+            تکمیل سفارش و ثبت فاکتور
           </button>
 
           <a

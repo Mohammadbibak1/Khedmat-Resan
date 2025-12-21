@@ -56,34 +56,34 @@
 
     <div class="w-100 d-flex flex-column align-items-center row-gap-3 ">
 
-      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+      <router-link to="/OrdersPage" class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
         <div>
           <img src="../assets/img/clipboard%20(5).svg" alt="" class="icon-1">
           <span class="font-bold font-4 mr-3">سفارشات جدید</span>
         </div>
         <img src="../assets/img/back.svg" alt="" class="icon-5">
-      </div>
-      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+      </router-link>
+      <router-link to="/approved-orders" class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
         <div>
           <img src="../assets/img/project-management%20(1)%20(1).svg" alt="" class="icon-1 ">
           <span class="font-bold font-4 mr-3">سفارشات تایید شده (توسط شما)</span>
         </div>
         <img src="../assets/img/back.svg" alt="" class="icon-5">
-      </div>
-      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+      </router-link>
+      <router-link to="/FinishedOrders" class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
         <div>
           <img src="../assets/img/Group%202761.svg" alt="" class="icon-1">
           <span class="font-bold font-4 mr-3">سفارشات پایان یافته</span>
         </div>
         <img src="../assets/img/back.svg" alt="" class="icon-5">
-      </div>
-      <div class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
+        </router-link>
+      <router-link to="/approved-orders" class="w-100 bg-white rounded-2 shadow d-flex justify-content-between align-items-center p-3">
         <div>
           <img src="../assets/img/transaction.svg" alt="" class="icon-1">
           <span class="font-bold font-4 mr-3">تراکنش ها</span>
         </div>
         <img src="../assets/img/back.svg" alt="" class="icon-5">
-      </div>
+        </router-link>
 
     </div>
 

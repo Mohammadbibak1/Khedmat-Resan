@@ -15,6 +15,10 @@ import RulesPage from '@/views/RulesPage.vue'
 import AboutUsPage from '@/views/AboutUsPage.vue'
 import PrivacyPage from '@/views/PrivacyPage.vue'
 import OrdersPage from '@/views/OrdersPage.vue'
+import ApprovedOrders from '@/views/ApprovedOrders.vue'
+import FinishedOrders from '@/views/FinishedOrders.vue'
+import factor from '@/views/Factor.vue'
+import Transaction from '@/views/Transaction.vue'
 
 
 const router = createRouter({
@@ -106,6 +110,26 @@ const router = createRouter({
       path: '/orders_page',
       name: 'OrdersPage',
       component: OrdersPage,
+    },
+
+    { path: '/approved-orders',
+      name: 'ApprovedOrders',
+      component: ApprovedOrders
+    },
+
+    { path: '/FinishedOrders',
+      name: 'FinishedOrders',
+      component: FinishedOrders
+    },
+
+    { path: '/factor',
+      name: 'factor',
+      component: factor
+    },
+
+    { path: '/Transaction',
+      name: 'Transaction',
+      component: Transaction
     },
 
   ],
